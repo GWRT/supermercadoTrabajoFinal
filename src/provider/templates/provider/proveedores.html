@@ -81,26 +81,26 @@
 								List Providers
 							</div>
 							<div class="full-width panel-content">
-								<form action="#">
-									<div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
-										<label class="mdl-button mdl-js-button mdl-button--icon" for="searchProvider">
-											<i class="zmdi zmdi-search"></i>
-										</label>
-										<div class="mdl-textfield__expandable-holder">
-											<input class="mdl-textfield__input" type="text" id="searchProvider">
-											<label class="mdl-textfield__label"></label>
-										</div>
-									</div>
-								</form>
 								{% for prov in provs %}
 									<div class="mdl-list">
 									<div class="mdl-list__item mdl-list__item--two-line">
 										<span class="mdl-list__item-primary-content">
 											<i class="zmdi zmdi-truck mdl-list__item-avatar"></i>
-											<span>{{prov.persona}}</span>
-											<span class="mdl-list__item-sub-title">DNI</span>
+											<span>
+												{{prov.persona}}:
+												{{prov.telefono}}
+											</span>
+											<span class="mdl-list__item-sub-title">{{prov.razonSocial}}</span>
+											<p class="mdl-list__item-sub-title">
+												{% if prov.estado %}
+													Estado: Activo
+												{% else %}
+													Estado: Inactivo	
+												{% endif %}
+											</p>
+											<span class="mdl-list__item-sub-title">{{prov.telefono}}</span>
 										</span>
-										<a class="mdl-list__item-secondary-action" href="#!"><i class="zmdi zmdi-more"></i></a>
+										<a class="mdl-list__item-secondary-action" href="#!">Modificar</i></a>
 									</div>
 								</div>
 								{% endfor %}
