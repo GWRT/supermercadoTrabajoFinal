@@ -3,6 +3,6 @@ from .models import Provider
 
 # Create your views here.
 def providers (request):
-	prov = Provider.objects.all()
+	provs = Provider.objects.all()
 
-	return render(request, 'provider/proveedores.html',{'prov':prov})
+	return render(request, 'provider/proveedores.html',{'provs':provs})
