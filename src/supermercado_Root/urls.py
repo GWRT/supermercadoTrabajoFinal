@@ -15,9 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from provider.views import provider
+from provider.views import providers
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('provider/' provider, name='proveedores'),
+    path('provider/', providers, name='proveedores'),
 ]

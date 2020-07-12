@@ -1,7 +1,7 @@
 from django.db import models
 
 # Create your models here.
-class provider(models.Model):
+class Provider(models.Model):
 	ruc = models.IntegerField()
 	razonSocial = models.CharField(max_length = 100)
 	persona = models.CharField(max_length = 100)
