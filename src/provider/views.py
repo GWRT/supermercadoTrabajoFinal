@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Provider
 from .forms import providerForm
 
@@ -16,6 +16,13 @@ def modificar(request, id):
 
 		if form.is_valid():
 			form.save()
-			return redirect(to='providers')
+			return redirect('provider')
 
 	return render(request, 'provider/modificar.html',{'form':providerForm(instance=provs)})		
+
+
+def eliminar(request, id):
+	provs = Provider.objects.get(id = id)
+	provs.delete()
+
+	return redirect(to='provider')
