@@ -15,11 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from provider.views import providers
+from provider.views import providers, modificar
 from indexPagina.views import home
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',home, name='homePage'),
     path('provider/', providers, name='proveedores'),
+    path('modificar/<id>/',modificar, name='modificar'),
 ]

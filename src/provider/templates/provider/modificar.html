@@ -1,0 +1,12 @@
+{% extends 'index.html' %}
+{% block content %}
+	<form method="POST">
+		<h4>Modificar Proveedor</h4>
+		{% csrf_token %}
+		{% for field in form %}
+			<label for="field.id_for_label">{{ field.label }}</label>
+			{{ field }}
+			<br>
+		{% endfor %}
+	</form>
+{% endblock %}

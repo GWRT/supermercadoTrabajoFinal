@@ -15,8 +15,8 @@ class providerForm(forms.ModelForm):
 		]
 		labels = {
 			'ruc' : 'RUC',
-			'razonSocial' : 'Razon Social'
-			'persona' : 'Persona-Contacto',
+			'razonSocial' : 'Razon Social',
+			'persona' : 'Persona de Contacto',
 			'direccion' : 'Direccion',
 			'email' : 'email',
 			'telefono' : 'celular',
@@ -24,7 +24,7 @@ class providerForm(forms.ModelForm):
 		}
 
 	def __init__(self, *args, **kwargs):
-		super(Provider,self).__init__(*args,**kwargs)
+		super(providerForm,self).__init__(*args,**kwargs)
 		self.fields['ruc'].widget.attrs.update({'class':'entrada'})
 		self.fields['razonSocial'].widget.attrs.update({'class':'entrada'})
 		self.fields['persona'].widget.attrs.update({'class':'entrada'})
