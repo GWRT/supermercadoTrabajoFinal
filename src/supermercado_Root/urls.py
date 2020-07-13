@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from provider.views import providers, modificar, eliminar, create
+from categoria.views import categories
 from indexPagina.views import home
 
 urlpatterns = [
@@ -25,4 +26,5 @@ urlpatterns = [
     path('crear/', create, name='crearProveedor'),
     path('modificar/<id>/', modificar, name='modificarProveedor'),
     path('eliminar/<id>/', eliminar, name='eliminarProveedor'),
+    path('category', categories, name='category')
 ]
