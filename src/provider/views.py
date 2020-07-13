@@ -4,9 +4,26 @@ from .forms import providerForm
 
 # Create your views here.
 def providers (request):
-	provs = Provider.objects.all()
+	context = {
+		'provs' : Provider.objects.all(),
+	}	
 
-	return render(request, 'provider/proveedores.html',{'provs':provs})
+	return render(request, 'provider/proveedores.html',context)
+
+def create(request):
+	context = {
+		'form' : providerForm()
+	}
+
+	if request.method == 'POST':
+		formulario = providerForm(request.POST)
+		if formulario.is_valid():
+			formulario.save()
+			print('guardado')
+			return redirect(to = 'provider')
+		context['form'] = formulario
+
+	return render(request, 'provider/create.html', context)	
 
 def modificar(request, id):
 	provs = Provider.objects.get(id = id)
