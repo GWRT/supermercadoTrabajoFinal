@@ -41,6 +41,7 @@ INSTALLED_APPS = [
 
     'indexPagina',
     'provider',
+    'categoria',
 ]
 
 MIDDLEWARE = [
