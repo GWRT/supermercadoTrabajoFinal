@@ -325,10 +325,7 @@
 								New Product
 							</div>
 							<div class="full-width panel-content">
-								<form method="post" enctype="multipart/form-data"> {% csrf_token %}
-									{{context.form.as_p}}
-									<input type="submit" class="button">
-								</form>
+								
 							</div>
 						</div>
 					</div>
@@ -348,6 +345,7 @@
 								</div>
 							</div>
 						</form>
+						
 						<nav class="full-width menu-categories">
 							<ul class="list-unstyle text-center">
 								<li><a href="#!">Category 1</a></li>
@@ -356,6 +354,8 @@
 								<li><a href="#!">Category 4</a></li>
 							</ul>
 						</nav>
+						<a class="boption" href="addProduct">Add</a>
+
 						<div class="full-width text-center" style="padding: 30px 0;">
 							
 							{% for prod in prods %}
@@ -372,6 +372,8 @@
 									<button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
 										<i class="zmdi zmdi-more"></i>
 									</button>
+									<a class="boption" href="updateProduct/{{prod.id}}/">Update</a><br>
+									<a class="boption" href="deleteProduct/{{prod.id}}/">Delete</a>
 								</div>
 							</div>
 							{% endfor %}
@@ -381,5 +383,16 @@
 			</div>
 		</div>
 	</section>
+	<div class="modal fade" id="edite" role="dialog">
+		
+	</div>
+
 </body>
+<script type="text/javascript">
+	function abrir_modal_edicion(url){
+		$('#edicion').load(url, function(){
+			$(this).modal('show'),
+		});
+	}
+</script>
 </html>
