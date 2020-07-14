@@ -7,3 +7,4 @@ class Product(models.Model):
 	units = models.IntegerField()
 	price = models.IntegerField()
 	img = models.ImageField(upload_to='pics')
+

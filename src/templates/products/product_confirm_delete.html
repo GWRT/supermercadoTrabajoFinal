@@ -12,9 +12,8 @@
 	<div>
 	<form method="post" enctype="multipart/form-data"> {% csrf_token %}
 		<h2>Do you want delete this place?</h2>
-		<h2>{{obj.name}}</h2>
-		<input type="submit" value='si' class="button">
-		<a class="blink" href="../../mainPage">Cancelar</a>
+		<h2>{{object}}</h2>
+		<button type="submit" class="btn btn-danger" class="button">
 	</form>
 	</div>
 	
