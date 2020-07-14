@@ -462,51 +462,23 @@
 						</nav>
 						<div class="full-width text-center" style="padding: 30px 0;">
 							
+							{% for prod in prods %}
 							<div class="mdl-card mdl-shadow--2dp full-width product-card">
 								<div class="mdl-card__title">
-									<img src="{% static 'assets/img/fontLogin.jpg' %}" alt="product" class="img-responsive">
+									<img src="{{prod.img.url}}" alt="product" class="img-responsive">
 								</div>
 								<div class="mdl-card__supporting-text">
-									<small>Stock</small><br>
-									<small>Category</small>
+									<small>{{prod.price}} $</small><br>
+									<small>{{prod.barcode}} code</small>
 								</div>
 								<div class="mdl-card__actions mdl-card--border">
-									Product name
+									{{prod.name}}
 									<button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
 										<i class="zmdi zmdi-more"></i>
 									</button>
 								</div>
 							</div>
-							<div class="mdl-card mdl-shadow--2dp full-width product-card">
-								<div class="mdl-card__title">
-									<img src="{% static 'assets/img/fontLogin.jpg' %}" alt="product" class="img-responsive">
-								</div>
-								<div class="mdl-card__supporting-text">
-									<small>Stock</small><br>
-									<small>Category</small>
-								</div>
-								<div class="mdl-card__actions mdl-card--border">
-									Product name
-									<button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
-										<i class="zmdi zmdi-more"></i>
-									</button>
-								</div>
-							</div>
-							<div class="mdl-card mdl-shadow--2dp full-width product-card">
-								<div class="mdl-card__title">
-									<img src="{% static 'assets/img/fontLogin.jpg' %}" alt="product" class="img-responsive">
-								</div>
-								<div class="mdl-card__supporting-text">
-									<small>Stock</small><br>
-									<small>Category</small>
-								</div>
-								<div class="mdl-card__actions mdl-card--border">
-									Product name
-									<button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
-										<i class="zmdi zmdi-more"></i>
-									</button>
-								</div>
-							</div>
+							{% endfor %}
 						</div>
 					</div>
 				</div>
