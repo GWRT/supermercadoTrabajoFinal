@@ -365,17 +365,16 @@
 							{% for prod in object_list %}
 							<div class="mdl-card mdl-shadow--2dp full-width product-card">
 								<div class="mdl-card__title">
-									<img src="{{prod.img.url}}" width="450" height="200" alt="product">
+									<img src="{{prod.img.url}}" width="400" height="200" alt="product">
 								</div>
 								<div class="mdl-card__supporting-text">
-									<small>{{prod.price}} $</small><br>
-									<small>{{prod.barcode}} code</small>
+									<small>Stock: {{prod.units}} </small><br>
+									<small>Price: {{prod.price}} $</small><br>
+									<small>Cat: {{prod.cat}} </small>
 								</div>
 								<div class="mdl-card__actions mdl-card--border">
 									{{prod.name}}
-									<button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
-										<i class="zmdi zmdi-more"></i>
-									</button>
+				
 									<button onclick="abrir_modal_edicion('{% url 'updateProduct' prod.id %}')">Update</button>
 									<button onclick="abrir_modal_borrar('{% url 'deleteProduct' prod.id %}')">Delete</button>
 					
@@ -396,7 +395,7 @@
 	</section>
 	<div class="modal fade" id="update" role="dialog">	
 	</div>
-	<div class="modal fade" id="creacion" role="dialog">	
+	<div class="modal fade" id="creacion" rolborrare="dialog">	
 	</div>
 	<div class="modal fade" id="borrar" role="dialog">	
 	</div>

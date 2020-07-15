@@ -9,6 +9,10 @@ class ProductForm(forms.ModelForm):
 		'name',
 		'units',
 		'price',
+		'disc',
+		'cat',
+		'prov',
+		'stat',
 		'img',
 		]
 
