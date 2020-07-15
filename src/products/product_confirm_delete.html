@@ -12,7 +12,7 @@
 	<div>
 	<form method="post" enctype="multipart/form-data"> {% csrf_token %}
 		<h4>Do you want delete this place?</h4>
-		<h4>{{ object.name }}</h4>
+		<h4>{{object}}</h4>
 		<input type="submit">Confirmar</input>
 	</form>
 	</div>

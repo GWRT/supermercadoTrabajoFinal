@@ -12,13 +12,13 @@ class listProduct(ListView):
 
 class updateProduct(UpdateView):
 	model = Product
-	template_name = 'form.html'
+	template_name = 'modal.html'
 	form_class = ProductForm
 	success_url = reverse_lazy('listProduct')
 
 class addProduct(CreateView):
 	model = Product
-	template_name = 'form.html'
+	template_name = 'modal2.html'
 	form_class = ProductForm
 	success_url = reverse_lazy('listProduct')
 
