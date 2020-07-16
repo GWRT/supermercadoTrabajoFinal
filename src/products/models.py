@@ -22,9 +22,7 @@ class Product(models.Model):
 	name = models.CharField(max_length=20)
 	units = models.IntegerField()
 	price = models.IntegerField()
-	disc = models.IntegerField(
-		default=1,
-	)
+	disc = models.IntegerField()
 	cat = models.IntegerField(
 		null=False, blank=False,
 		choices=product_cat,

@@ -7,22 +7,22 @@ from django.urls import reverse_lazy
 # Create your views here.
 class listProduct(ListView):
 	model = Product
-	template_name = 'products.html'
+	template_name = 'products/products.html'
 	queryset = Product.objects.all()
-
-class updateProduct(UpdateView):
-	model = Product
-	template_name = 'modal.html'
-	form_class = ProductForm
-	success_url = reverse_lazy('listProduct')
 
 class addProduct(CreateView):
 	model = Product
-	template_name = 'modal2.html'
+	template_name = 'products/add.html'
 	form_class = ProductForm
 	success_url = reverse_lazy('listProduct')
 
 class deleteProduct(DeleteView):
 	model = Product
+	success_url = reverse_lazy('listProduct')
+
+class updateProduct(UpdateView):
+	model = Product
+	template_name = 'products/update.html'
+	form_class = ProductForm
 	success_url = reverse_lazy('listProduct')
 

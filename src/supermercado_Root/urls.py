@@ -16,12 +16,22 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
+from provider.views import providers, modificar, eliminar, create
+from categoria.views import categories, crearCategoria, modificarCategoria, eliminarCategoria
+from indexPagina.views import home
 from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',include('indexPagina.urls')),
-    path('home/',include('home.urls')),
+    path('',home, name='homePage'),
+    path('provider/', providers, name='provider'),
+    path('crear/', create, name='crearProveedor'),
+    path('modificar/<id>/', modificar, name='modificarProveedor'),
+    path('eliminar/<id>/', eliminar, name='eliminarProveedor'),
+    path('category/', categories, name='category'),
+    path('crearCategoria', crearCategoria, name='crearCategoria'),
+    path('modificarCategoria/<id>/', modificarCategoria, name='modificarCategoria'),
+    path('eliminarCategoria/<id>/', eliminarCategoria, name='eliminarCategoria'),
     path('products/',include('products.urls')),
 ]
 urlpatterns = urlpatterns + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
