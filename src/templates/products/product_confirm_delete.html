@@ -1,0 +1,21 @@
+
+<div class="modal-dialog modal-lg" role="document">
+	<div class="modal-content">
+		<div class="modal-header">
+			<h2 class="modal-title">Delete product</h2>
+			<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		<form action="{% url 'deleteProduct' object.id %}" method="POST" enctype="multipart/form-data"> {% csrf_token %}
+			<div class="modal-body"> 
+				<h5>Do you want delete this?</h5>
+				<h5>{{object}}</h5>
+			</div>
+			<div class="modal-footer">
+				<button type="button" data-dismiss="modal" >Cancelar</button>
+				<input type="submit" class="button">
+			</div>
+		</form>
+	</div>
+</div>
