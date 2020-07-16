@@ -42,7 +42,10 @@ INSTALLED_APPS = [
     'indexPagina',
     'provider',
     'categoria',
+<<<<<<< HEAD
     'products',
+=======
+>>>>>>> 4786988726fc999a50ea59034cd580e9df6ee5c7
 ]
 
 MIDDLEWARE = [
@@ -127,7 +130,11 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')    
 ]
+<<<<<<< HEAD
 STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+=======
+STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
+>>>>>>> 4786988726fc999a50ea59034cd580e9df6ee5c7
