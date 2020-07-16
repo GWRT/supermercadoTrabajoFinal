@@ -14,6 +14,7 @@ class Product(models.Model):
 	units = models.IntegerField()
 	price = models.IntegerField()
 	disc = models.IntegerField()
+	cat = models.ForeignKey(Category, on_delete = models.SET_NULL, null=True)
 	prov = models.ForeignKey(Provider, on_delete = models.SET_NULL, null=True)
 	stat = models.IntegerField(
 		null=False, blank=False,
