@@ -4,3 +4,6 @@ from django.db import models
 class Category(models.Model):
 	name = models.CharField(max_length = 50)
 	desc = models.CharField(max_length = 150)
+
+def _str_(self):
+		return u'{0}'.format(self.name)

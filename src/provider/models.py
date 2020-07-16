@@ -9,3 +9,6 @@ class Provider(models.Model):
 	email = models.EmailField(max_length = 254)
 	telefono = models.IntegerField()
 	estado =  models.BooleanField(default = True)
+
+def _str_(self):
+		return u'{0}'.format(self.persona)
