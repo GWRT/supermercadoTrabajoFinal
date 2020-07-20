@@ -18,9 +18,11 @@
 												{{prov.persona}}:
 												{{prov.telefono}}
 											</span>
-											<span class="mdl-list__item-sub-title">{{prov.razonSocial}}</span>
+											<span class="mdl-list__item-sub-title">
+												{{prov.razonSocial}}
+											</span>
 											<p class="mdl-list__item-sub-title">
-												{% if prov.estado %}
+												{% if prov.estado == 1 %}
 													Estado: Activo
 												{% else %}
 													Estado: Inactivo	
