@@ -41,4 +41,6 @@ class ProductForm(forms.ModelForm):
 		self.fields['prov'].widget.attrs.update({'class':'mdl-cell mdl-cell--12-col'})
 		self.fields['stat'].widget.attrs.update({'class':'mdl-cell mdl-cell--12-col'})
 
+		self.fields['prov'].queryset = Provider.objects.exclude(estado = False)
+
 	
