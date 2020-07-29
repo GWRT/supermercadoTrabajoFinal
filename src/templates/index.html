@@ -163,8 +163,8 @@
 				<nav class="navBar-options-list">
 					<ul class="list-unstyle">
 						{% if user.is_authenticated %}
-						<a href="accounts/logout">Iniciar sesion</a>
-						<li class="text-condensedLight noLink" ><small>User Name</small></li>
+						<a href="accounts/logout">Cerrar sesion</a>
+						<li class="text-condensedLight noLink" ><small>{{user.username}}</small></li>
 						<li class="noLink">
 							<figure>
 								<img src="{% static 'assets/img/avatar-male.png' %}" alt="Avatar" class="img-responsive">
