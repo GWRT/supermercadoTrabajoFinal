@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .forms import SignUpForm
+from django.contrib.auth.models import User, auth
 # Create your views here.
 
 def signup(request):
@@ -9,8 +10,8 @@ def signup(request):
 			form.save()
 			username = form.cleaned_data.get('username')
 			raw_password = form.cleaned_data.get('password')
-			user = authenticate(username=username, password=raw_password)
-			login(request, user)
+			user = auth.authenticate(username=username, password=raw_password)
+			signin(request, user)
 			return redirect('/')
 	else:
 		form = SignUpForm()
@@ -19,16 +20,20 @@ def signup(request):
 
 def signin(request):
 	if request.method == 'POST':
-		form = SignInForm(request.POST)
-		user = authenticate(username=username, password=raw_password)
+		username = request.POST['username']
+		password = request.POST['password']
 
-		if form.is_valid():
-			login(request, user)
-			return redirect('/')
+		user = auth.authenticate(username=username,password=password)
+
+		if user is not None:
+			auth.login(request, user)
+			return redirect("/")
 		else:
-			form = SignInForm()
+			messages.info(request, 'invalid credentials')
+			return redirect('/')
 
-	return render(request, 'accounts/signup.html',{'form':form})
+	else:
+		return render(request, 'accounts/signin.html')
 
 
 def logout(request):

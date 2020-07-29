@@ -17,12 +17,3 @@ class SignUpForm(UserCreationForm):
 			'password1',
 			'password2',
 		)
-
-class SignInForm(UserCreationForm):
-
-	class Meta:
-		model = User
-		fields = [
-			'username',
-			'password',
-		]
