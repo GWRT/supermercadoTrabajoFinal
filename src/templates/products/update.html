@@ -6,7 +6,11 @@
 		</div>
 		<form action="{% url 'updateProduct' object.id %}" method="POST" enctype="multipart/form-data"> {% csrf_token %}
 			<div class="full-width panel-content">
-				{{form.as_p}}
+				{% for field in form %}
+					<label for="field.id_for_label">{{ field.label }}</label>
+					{{ field }}
+					<br>
+				{% endfor %}
 				<button type="button" data-dismiss="modal" >Cancelar</button>
 				<input type="submit" class="button">
 			</div>

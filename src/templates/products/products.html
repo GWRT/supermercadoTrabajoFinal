@@ -21,22 +21,13 @@
 {% endblock %}
 {% block content %}
 	<!-- pageContent -->
-		<section class="full-width header-well">
-			<div class="full-width header-well-icon">
-				<i class="zmdi zmdi-washing-machine"></i>
-			</div>
-			<div class="full-width header-well-text">
-				<p class="text-condensedLight">
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde aut nulla accusantium minus corporis accusamus fuga harum natus molestias necessitatibus.
-				</p>
-			</div>
-		</section>
 		
 		<div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
 			<div>
 
 				<div class="mdl-grid">
 					<div class="mdl-cell mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--12-col-desktop">
+					<!--Barra de busqueda-->	
 						<form action="#">
 							<div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
 								<label class="mdl-button mdl-js-button mdl-button--icon" for="searchProduct">
@@ -48,16 +39,7 @@
 								</div>
 							</div>
 						</form>
-						
-						<nav class="full-width menu-categories">
-							<ul class="list-unstyle text-center">
-								<li><a href="#!">Category 1</a></li>
-								<li><a href="#!">Category 2</a></li>
-								<li><a href="#!">Category 3</a></li>
-								<li><a href="#!">Category 4</a></li>
-							</ul>
-						</nav>
-						
+
 						<button onclick="abrir_modal_creacion('{% url 'addProduct' %}')">Add</button>
 
 						<div class="full-width text-center" style="padding: 30px 0;">
