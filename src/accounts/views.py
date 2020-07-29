@@ -12,9 +12,23 @@ def signup(request):
 			user = authenticate(username=username, password=raw_password)
 			login(request, user)
 			return redirect('/')
+	else:
+		form = SignUpForm()
+
+	return render(request, 'accounts/signup.html',{'form':form})
+
+def signin(request):
+	if request.method == 'POST':
+		form = SignInForm(request.POST)
+		user = authenticate(username=username, password=raw_password)
+
+		if form.is_valid():
+			login(request, user)
+			return redirect('/')
 		else:
-			form = SignUpForm()
-		return render(request, 'signup.html',{'form':form})
+			form = SignInForm()
+
+	return render(request, 'accounts/signup.html',{'form':form})
 
 
 def logout(request):

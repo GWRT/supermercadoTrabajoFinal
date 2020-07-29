@@ -163,10 +163,7 @@
 				<nav class="navBar-options-list">
 					<ul class="list-unstyle">
 						{% if user.is_authenticated %}
-						<li class="btn-exit" id="btn-exit">
-							<i class="zmdi zmdi-power"></i>
-							<div class="mdl-tooltip" for="btn-exit">Cerrar sesion</div>
-						</li>
+						<a href="accounts/logout">Iniciar sesion</a>
 						<li class="text-condensedLight noLink" ><small>User Name</small></li>
 						<li class="noLink">
 							<figure>
@@ -174,8 +171,8 @@
 							</figure>
 						</li>
 						{% else %}
-						<a href="{{dest.getUpdate}}">Registrarse</a>
-						<a href="{{dest.getUpdate}}">Iniciar sesion</a>
+						<a href="accounts/signup">Registrarse</a>
+						<a href="accounts/signin">Iniciar sesion</a>
 						
 						{% endif %}
 					</ul>
