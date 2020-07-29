@@ -24,7 +24,7 @@
 	<script src="{% static 'js/main.js' %}" ></script>
 	<script src="http://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
 	{% block header %}
-		reemplazar
+		
 	{% endblock %}
 </head>
 <body>
@@ -162,9 +162,10 @@
 				<div class="mdl-tooltip" for="btn-menu">Hide / Show MENU</div>
 				<nav class="navBar-options-list">
 					<ul class="list-unstyle">
+						{% if user.is_authenticated %}
 						<li class="btn-exit" id="btn-exit">
 							<i class="zmdi zmdi-power"></i>
-							<div class="mdl-tooltip" for="btn-exit">LogOut</div>
+							<div class="mdl-tooltip" for="btn-exit">Cerrar sesion</div>
 						</li>
 						<li class="text-condensedLight noLink" ><small>User Name</small></li>
 						<li class="noLink">
@@ -172,6 +173,11 @@
 								<img src="{% static 'assets/img/avatar-male.png' %}" alt="Avatar" class="img-responsive">
 							</figure>
 						</li>
+						{% else %}
+						<a href="{{dest.getUpdate}}">Registrarse</a>
+						<a href="{{dest.getUpdate}}">Iniciar sesion</a>
+						
+						{% endif %}
 					</ul>
 				</nav>
 			</div>
