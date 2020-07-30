@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .forms import SignUpForm
+from django.contrib import messages
 from django.contrib.auth.models import User, auth
 # Create your views here.
 
@@ -11,7 +12,7 @@ def signup(request):
 			username = form.cleaned_data.get('username')
 			raw_password = form.cleaned_data.get('password')
 			user = auth.authenticate(username=username, password=raw_password)
-			signin(request, user)
+			auth.login(request, user)
 			return redirect('/')
 	else:
 		form = SignUpForm()
@@ -30,7 +31,7 @@ def signin(request):
 			return redirect("/")
 		else:
 			messages.info(request, 'invalid credentials')
-			return redirect('/')
+			return redirect('signin')
 
 	else:
 		return render(request, 'accounts/signin.html')
