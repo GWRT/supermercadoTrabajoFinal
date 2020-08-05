@@ -1,28 +1,40 @@
-<h2> Lista de Productos</h2>
+<html>
+    <head>
+        <title>Documento</title>
+        <style>
+            table{ 
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <h2> Lista de Productos</h2>
 
-<table border="1">
-    <thead>
-        <th>Codigo</th>
-        <th>Nombre</th>
-        <th>Unidades</th>
-        <th>Precio</th>
-        <th>Descuento</th>
-        <th>Categoria</th>
-        <th>Proveedor</th>
-        <th>Estado</th>
-    </thead>
-    <tbody>
-        {% for product in products %}
-            <tr>
-                <td>{{ product.barcode }}</td>
-                <td>{{ product.name }}</td>
-                <td>{{ product.units }}</td>
-                <td>{{ product.price }}</td>
-                <td>{{ product.disc }}</td>
-                <td>{{ product.cat }}</td>
-                <td>{{ product.prov }}</td>
-                <td>{{ product.stat }}</td>
-            </tr>
-        {% endfor %}
-    </tbody>
-</table>
+        <table border="1" class="tabla">
+            <thead>
+                <th>Codigo</th>
+                <th>Nombre</th>
+                <th>Unidades</th>
+                <th>Precio</th>
+                <th>Descuento</th>
+                <th>Categoria</th>
+                <th>Proveedor</th>
+                <th>Estado</th>
+            </thead>
+            <tbody>
+                {% for product in products %}
+                    <tr>
+                        <td>{{ product.barcode }}</td>
+                        <td>{{ product.name }}</td>
+                        <td>{{ product.units }}</td>
+                        <td>{{ product.price }}</td>
+                        <td>{{ product.disc }}</td>
+                        <td>{{ product.cat }}</td>
+                        <td>{{ product.prov }}</td>
+                        <td>{{ product.stat }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </body>
+</html>
