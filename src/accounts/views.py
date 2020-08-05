@@ -15,10 +15,10 @@ def login(request):
                 auth.login(request, user)
                 return redirect('homePage')
             else:
-                messages.info(request, 'Su cuenta no es superusuario')
+                messages.info(request, 'La cuenta no es superusuario')
                 return redirect('login')
         else:
-            messages.info(request, 'autenticacion invalida')
+            messages.info(request, 'La cuenta no existe')
             return redirect('login')
     else:
         return render(request, 'accounts/login.html')
