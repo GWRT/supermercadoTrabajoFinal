@@ -14,6 +14,9 @@ def login(request):
             if user.is_superuser:
                 auth.login(request, user)
                 return redirect('homePage')
+            else:
+                messages.info(request, 'Su cuenta no es superusuario')
+                return redirect('login')
         else:
             messages.info(request, 'autenticacion invalida')
             return redirect('login')
