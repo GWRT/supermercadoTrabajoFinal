@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .forms import ProductForm
 from .models import Product
-from django.views.generic import TemplateView, ListView, UpdateView, CreateView, DeleteView
+from django.views.generic import View, TemplateView, ListView, UpdateView, CreateView, DeleteView
 from django.urls import reverse_lazy
 
 # Create your views here.
@@ -30,3 +30,5 @@ class productsList(ListView):
 	model = Product
 	template_name = 'products/tablaProductos.html'
 	context_object_name = 'products'
+
+class ListView	
