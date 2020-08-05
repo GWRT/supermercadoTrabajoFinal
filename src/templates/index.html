@@ -41,8 +41,11 @@
 				</div>
 				<figcaption>
 					<span>
-						Full Name Admin<br>
-						<small>Admin</small>
+						{% if user.is_authenticated %}
+							<br>
+							{{ user.username | upper}}<br>
+							<small>Administrador</small>
+						{% endif %}
 					</span>
 				</figcaption>
 			</figure>

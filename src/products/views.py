@@ -26,3 +26,7 @@ class updateProduct(UpdateView):
 	form_class = ProductForm
 	success_url = reverse_lazy('listProduct')
 
+class productsList(ListView):
+	model = Product
+	template_name = 'products/tablaProductos.html'
+	context_object_name = 'products'
