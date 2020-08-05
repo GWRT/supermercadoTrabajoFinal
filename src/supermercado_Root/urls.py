@@ -19,11 +19,12 @@ from django.conf import settings
 from provider.views import providers, modificar, eliminar, create
 from categoria.views import categories, crearCategoria, modificarCategoria, eliminarCategoria
 from indexPagina.views import home
+from accounts.views import login
 from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',home, name='homePage'),
+    path('',login, name='homePage'),
     path('provider/', providers, name='provider'),
     path('crear/', create, name='crearProveedor'),
     path('modificar/<id>/', modificar, name='modificarProveedor'),
