@@ -16,15 +16,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
+from django.conf.urls.static import static
 from provider.views import providers, modificar, eliminar, create
 from categoria.views import categories, crearCategoria, modificarCategoria, eliminarCategoria
 from indexPagina.views import home
 from accounts.views import login
-from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',login, name='homePage'),
+    path('',login, name='login'),
+    path('home', home, name='homePage'),
     path('provider/', providers, name='provider'),
     path('crear/', create, name='crearProveedor'),
     path('modificar/<id>/', modificar, name='modificarProveedor'),
