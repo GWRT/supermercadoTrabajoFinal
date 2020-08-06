@@ -7,13 +7,7 @@
   </head>
   <body>
     <header class="clearfix">
-      <h1>INVOICE 3-2-1</h1>
-      <div id="company" class="clearfix">
-        <div>Company Name</div>
-        <div>455 Foggy Heights,<br /> AZ 85004, US</div>
-        <div>(602) 519-0450</div>
-        <div><a href="mailto:company@example.com">company@example.com</a></div>
-      </div>
+      <h1>Tabla de Productos</h1>
       <div id="project">
         {% if user.is_authenticated %}
         <div><span>Nombre</span> Tabla de Productos</div>
@@ -25,7 +19,7 @@
     </header>
       <table>
         <thead>
-            <th style="border-bottom: 1px solid #2f363b;">Codigo</th>
+            <th>Codigo</th>
             <th>Nombre</th>
             <th>Unidades</th>
             <th>Precio</th>
