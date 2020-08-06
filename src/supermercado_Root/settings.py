@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'categoria',
     'products',
     'administrators',
+    'historial',
     'accounts',
 ]
 
