@@ -41,8 +41,15 @@
 				</div>
 				<figcaption>
 					<span>
-						Full Name Admin<br>
-						<small>Admin</small>
+						{% if user.is_authenticated %}
+							<br>
+							{{ user.username | upper}}<br>
+							{% if user.is_superuser %}
+								<small>Administrador</small>
+							{% else %}
+								<small>Usuario</small>
+							{% endif %}	
+						{% endif %}
 					</span>
 				</figcaption>
 			</figure>
@@ -94,6 +101,7 @@
 					</li>
 					<li class="full-width divider-menu-h"></li>
 					<li class="full-width">
+<<<<<<< HEAD
 						<a href="sales.html" class="full-width">
 							<div class="navLateral-body-cl">
 								<i class="zmdi zmdi-shopping-cart"></i>
@@ -106,6 +114,9 @@
 					<li class="full-width divider-menu-h"></li>
 					<li class="full-width">
 						<a href="../products" class="full-width">
+=======
+						<a href="{% url 'listProduct' %}" class="full-width">
+>>>>>>> 459d354b9c2272a5fc640cded2edff0c46bcfa03
 							<div class="navLateral-body-cl">
 								<i class="zmdi zmdi-store"></i>
 							</div>
@@ -114,6 +125,7 @@
 							</div>
 						</a>
 					</li>
+<<<<<<< HEAD
 					<li class="full-width divider-menu-h"></li>
 					<li class="full-width">
 						<a href="#!" class="full-width btn-subMenu">
@@ -148,6 +160,8 @@
 							</li>
 						</ul>
 					</li>
+=======
+>>>>>>> 459d354b9c2272a5fc640cded2edff0c46bcfa03
 				</ul>
 			</nav>
 		</div>
@@ -161,8 +175,13 @@
 				<div class="mdl-tooltip" for="btn-menu">Hide / Show MENU</div>
 				<nav class="navBar-options-list">
 					<ul class="list-unstyle">
+<<<<<<< HEAD
 						<a href="{% url 'logout' %}">Cerrar sesion</a>
 						<a href="{% url 'account' %}">Cuenta</a>
+=======
+						{% if user.is_authenticated %}
+						<a href="{% url 'logout' %}">Cerrar sesion</a>
+>>>>>>> 459d354b9c2272a5fc640cded2edff0c46bcfa03
 						<li class="text-condensedLight noLink" ><small>{{user.username}}</small></li>
 						<li class="noLink">
 							<figure >
