@@ -34,5 +34,6 @@ urlpatterns = [
     path('eliminarCategoria/<id>/', eliminarCategoria, name='eliminarCategoria'),
     path('products/',include('products.urls')),
     path('',include('administrators.urls')), 
+    path('accounts/',include('accounts.urls')), 
 ]
 urlpatterns = urlpatterns + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

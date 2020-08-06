@@ -162,10 +162,11 @@
 				<nav class="navBar-options-list">
 					<ul class="list-unstyle">
 						<a href="{% url 'logout' %}">Cerrar sesion</a>
+						<a href="{% url 'account' %}">Cuenta</a>
 						<li class="text-condensedLight noLink" ><small>{{user.username}}</small></li>
 						<li class="noLink">
-							<figure>
-								<img src="{% static 'assets/img/avatar-male.png' %}" alt="Avatar" class="img-responsive">
+							<figure >
+								<img  src="{% static 'assets/img/avatar-male.png' %}" alt="Avatar" class="img-responsive">
 							</figure>
 						</li>
 				
