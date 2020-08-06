@@ -97,7 +97,7 @@
 					</li>
 					<li class="full-width divider-menu-h"></li>
 					<li class="full-width">
-						<a href="../products" class="full-width">
+						<a href="{% url 'listProduct' %}" class="full-width">
 							<div class="navLateral-body-cl">
 								<i class="zmdi zmdi-store"></i>
 							</div>
@@ -120,7 +120,7 @@
 				<nav class="navBar-options-list">
 					<ul class="list-unstyle">
 						{% if user.is_authenticated %}
-						<a href="accounts/logout">Cerrar sesion</a>
+						<a href="{% url 'logout' %}">Cerrar sesion</a>
 						<li class="text-condensedLight noLink" ><small>{{user.username}}</small></li>
 						<li class="noLink">
 							<figure>
