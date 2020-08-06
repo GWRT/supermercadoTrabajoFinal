@@ -1,44 +1,43 @@
 from django.shortcuts import render, redirect
-from .forms import SignUpForm
-from django.contrib import messages
+from .forms import AccountForm, UpdateForm, AccountUpdate
+from .models import Account
 from django.contrib.auth.models import User, auth
-# Create your views here.
+from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth import update_session_auth_hash
 
-def signup(request):
-	context = {
-		'formulario' : SignUpForm()
-	}
+# Create your views here.
+def account(request):
 	if request.method == 'POST':
-		form = SignUpForm(request.POST)
+		u_form = UpdateForm(request.POST, instance=request.user)
+		a_form = AccountUpdate(request.POST, request.FILES, instance=request.user.account)
+		if u_form.is_valid() and a_form.is_valid:
+			u_form.save()
+			a_form.save()
+			return redirect('account')
+	else: 
+		u_form = UpdateForm(instance=request.user)
+		a_form = AccountUpdate(instance=request.user.account)
+
+	context = {
+	'u_form' : u_form,
+	'a_form' : a_form,
+	}
+	return render(request, 'accounts/account.html', context)
+
+def cpassword(request):
+	if request.method == 'POST':
+		form = PasswordChangeForm(data=request.POST, user=request.user)
 		if form.is_valid():
 			form.save()
-			username = form.cleaned_data.get('username')
-			raw_password = form.cleaned_data.get('password')
-			user = auth.authenticate(username=username, password=raw_password)
-			auth.login(request, user)
-			return redirect(to = 'homePage')
-		context['formulario'] = form
+			update_session_auth_hash(request, form.user)
+			return redirect('account')
 
-	return render(request, 'accounts/signup.html',context)
-
-def signin(request):
-	if request.method == 'POST':
-		username = request.POST['username']
-		password = request.POST['password']
-
-		user = auth.authenticate(username=username,password=password)
-
-		if user is not None:
-			auth.login(request, user)
-			return redirect("/")
 		else:
-			messages.info(request, 'invalid credentials')
-			return redirect('signin')
+			return redirect('account')
+	else: 
+		form = PasswordChangeForm(user=request.user)
 
-	else:
-		return render(request, 'accounts/signin.html')
-
-
-def logout(request):
-	auth.logout(request)
-	return redirect('/')
+	context = {
+	'form' : form,
+	}
+	return render(request, 'accounts/password.html', context)

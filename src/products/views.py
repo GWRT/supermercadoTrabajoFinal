@@ -5,6 +5,8 @@ from django.http import HttpResponse
 from django.views.generic import View, TemplateView, ListView, UpdateView, CreateView, DeleteView
 from django.urls import reverse_lazy
 from .utils import render_to_pdf
+from django.contrib.auth.models import User
+
 
 # Create your views here.
 class listProduct(ListView):
@@ -31,8 +33,11 @@ class updateProduct(UpdateView):
 class listProductPDF(View):
 	def get(self, request, *args, **kwargs):
 		products = Product.objects.all()
+		user = request.user
 		data = {
-			'products' : products
+			'products' : products,
+			'user' : user,
 		}
 		pdf = render_to_pdf('products/tablaProductos.html', data)
 		return HttpResponse(pdf, content_type = 'application/pdf')
+
