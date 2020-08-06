@@ -5,6 +5,9 @@ from django.contrib.auth.models import User, auth
 # Create your views here.
 
 def signup(request):
+	context = {
+		'formulario' : SignUpForm()
+	}
 	if request.method == 'POST':
 		form = SignUpForm(request.POST)
 		if form.is_valid():
@@ -13,11 +16,10 @@ def signup(request):
 			raw_password = form.cleaned_data.get('password')
 			user = auth.authenticate(username=username, password=raw_password)
 			auth.login(request, user)
-			return redirect('/')
-	else:
-		form = SignUpForm()
+			return redirect(to = 'homePage')
+		context['formulario'] = form
 
-	return render(request, 'accounts/signup.html',{'form':form})
+	return render(request, 'accounts/signup.html',context)
 
 def signin(request):
 	if request.method == 'POST':

@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Login</title>
+	<title>Registrar</title>
 	<link rel="stylesheet" href="{% static 'css/normalize.css' %}">
 	<link rel="stylesheet" href="{% static 'css/sweetalert2.css' %}">
 	<link rel="stylesheet" href="{% static 'css/material.min.css' %}">
@@ -12,7 +12,7 @@
 	<link rel="stylesheet" href="{% static 'css/jquery.mCustomScrollbar.css' %}">
 	<link rel="stylesheet" href="{% static 'css/main.css' %}">
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js' %}"></script>
-	<script>window.jQuery || document.write('<script src="js/jquery-1.11.2.min.js"><\/script>')</script>
+	<script>window.jQuery || document.write('<script src="{% static "js/jquery-1.11.2.min.js" %}"><\/script>')</script>
 	<script src="{% static 'js/material.min.js' %}" ></script>
 	<script src="{% static 'js/sweetalert2.min.js' %}" ></script>
 	<script src="{% static 'js/jquery.mCustomScrollbar.concat.min.js' %}" ></script>
@@ -24,19 +24,21 @@
 			<p class="text-center" style="font-size: 80px;">
 				<i class="zmdi zmdi-account-circle"></i>
 			</p>
-			<p class="text-center text-condensedLight">Sign up</p>
+			<p class="text-center text-condensedLight">Registar</p>
 			<form method="post">
 				{% csrf_token %}
-				{% for field in form %}
-				<p>
-					{{ field.label_tag }}<br>
+				{% for field in formulario %}
+				<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">	
 					{{ field }}
+					<label>
+						{{ field.label }}
+					</label>
 					{% for error in field.errors %}
 						<p style="color:red">{{ error }}</p>
 					{% endfor %}
-				</p>
+				</div>
 				{% endfor %}	
-				<button type="submit">Sign up</button>
+				<button type="submit" class="mdl-button mdl-js-button mdl-js-ripple-effect" style="color: #3F51B5; margin: 0 auto; display: block;">Enviar</button>
 			</form>
 				
 		</div>
