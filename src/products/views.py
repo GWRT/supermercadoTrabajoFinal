@@ -22,6 +22,12 @@ class deleteProduct(DeleteView):
 	model = Product
 	success_url = reverse_lazy('listProduct')
 
+	def post(self, request, *args, **kwargs):
+		object = self.get_object()
+		return object
+
+	queryset = Product.objects.get()
+
 class updateProduct(UpdateView):
 	model = Product
 	template_name = 'products/update.html'
