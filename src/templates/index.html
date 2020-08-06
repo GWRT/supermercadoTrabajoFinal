@@ -44,7 +44,11 @@
 						{% if user.is_authenticated %}
 							<br>
 							{{ user.username | upper}}<br>
-							<small>Administrador</small>
+							{% if user.is_superuser %}
+								<small>Administrador</small>
+							{% else %}
+								<small>Usuario</small>
+							{% endif %}	
 						{% endif %}
 					</span>
 				</figcaption>
