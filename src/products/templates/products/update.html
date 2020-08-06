@@ -1,10 +1,12 @@
+{% extends 'index.html' %}
+{% block content %}
 <div class="modal-dialog modal-lg" role="document">
 	<div class="modal-content">
 		<div class="full-width panel mdl-shadow--2dp">
 		<div class="full-width panel-tittle bg-primary text-center tittles">
 			Update product
 		</div>
-		<form action="{% url 'updateProduct' object.id %}" method="POST" enctype="multipart/form-data"> {% csrf_token %}
+		<form method="POST" enctype="multipart/form-data"> {% csrf_token %}
 			<div class="full-width panel-content">
 				{% for field in form %}
 					<label for="field.id_for_label">{{ field.label }}</label>
@@ -12,9 +14,10 @@
 					<br>
 				{% endfor %}
 				<button type="button" data-dismiss="modal" >Cancelar</button>
-				<input type="submit" class="button">
+				<input type="submit" name="submit" value="Enviar">
 			</div>
 		</form>
 		</div>
 	</div>
 </div>
+{% endblock %}

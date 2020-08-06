@@ -6,7 +6,7 @@ from .views import listProduct, updateProduct, addProduct, deleteProduct, listPr
 urlpatterns = [
     path('',listProduct,name='listProduct'),
     path('addProduct',addProduct, name='addProduct'),
-    path('updateProduct/<int:pk>/',updateProduct, name='updateProduct'),
-    path('deleteProduct/<int:pk>/',deleteProduct, name='deleteProduct'),
+    path('updateProduct/<id>/',updateProduct, name='updateProduct'),
+    path('deleteProduct/<id>/',deleteProduct, name='deleteProduct'),
     path('pdf/', listProductPDF.as_view(), name='tablaPDF'),
 ]

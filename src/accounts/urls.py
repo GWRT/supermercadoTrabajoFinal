@@ -4,8 +4,8 @@ from django.urls import path, include
 from .views import signup, logout, signin
 
 urlpatterns = [
-    path('signup', views.signup, name='signup'),
-    path('signin', views.signin, name='signin'),
+    path('signup', views.signup, name='singup'),
+    path('signin', views.signin, name='singin'),
     path('logout', views.logout, name='logout'),
 ]
 

@@ -21,10 +21,11 @@ def addProduct(request):
 	if request.method == 'POST':
 		formulario = ProductForm(request.POST)
 		if formulario.is_valid():
+			formulario.save()
 			prod = formulario.save(commit=False)
 			usuario = request.user
 			historial(prod, usuario, 1)
-			prod.save()
+			
 			return redirect(to = 'listProduct')
 		context['form'] = formulario
 
@@ -48,6 +49,7 @@ def updateProduct(request, id):
 			producto = form.save(commit=False)
 			usuario = request.user
 			historial(producto, usuario, 3)
+			producto.save()
 			return redirect('listProduct')
 
 	return render(request, 'products/update.html',{'form':ProductForm(instance=prod)})

@@ -4,13 +4,19 @@
 	<div class="modal-content">
 		
 		<div class="full-width panel mdl-shadow--2dp">
-		<div class="full-width panel-tittle bg-primary text-center tittles">
+		<div class="full-width panel-tittle bg-primary text-center titles">
 			Añadir Producto
 		</div>
 		<form method="POST" enctype="multipart/form-data"> {% csrf_token %}
 			<div class="full-width panel-content">
-				{{form.as_p}}
-				<input type="submit" class="button">
+				{% for field in form %}
+
+				<label for="field.id_for_label" class="labelForm">{{ field.label }}</label>
+				{{ field }}
+				<br>
+
+				{% endfor %}
+				<input type="submit" value="Enviar">
 			</div>
 		</form>
 		</div>
