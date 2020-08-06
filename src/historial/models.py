@@ -5,8 +5,9 @@ from products.models import Product
 # Create your models here.
 
 type_entry = [
-    (1, "Ingresar"),
-    (2, "Eliminar"),
+    (1, "Ingresado"),
+    (2, "Eliminado"),
+    (3, "Actualizado")
 ]
 class History(models.Model):
     prod = models.ForeignKey(Product, on_delete = models.CASCADE)

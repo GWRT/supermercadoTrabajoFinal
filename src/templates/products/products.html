@@ -1,24 +1,4 @@
 {% extends 'index.html' %}
-{% block header %}
-	<script type="text/javascript">
-		var $ = jQuery.noConflict();
-		function abrir_modal_edicion(url){
-			$('#update').load(url, function(){
-				$(this).modal('show');
-			});
-		}
-		function abrir_modal_creacion(url){
-			$('#creacion').load(url, function(){
-				$(this).modal('show');
-			});
-		}
-		function abrir_modal_borrar(url){
-			$('#borrar').load(url, function(){
-				$(this).modal('show');
-			});
-		}
-	</script>
-{% endblock %}
 {% block content %}
 	<!-- pageContent -->
 		
@@ -39,13 +19,12 @@
 								</div>
 							</div>
 						</form>
-
-						<button onclick="abrir_modal_creacion('{% url 'addProduct' %}')">Add</button>
+						<a href="{% url 'addProduct' %}">Añadir</a>
 						<a href="{% url 'tablaPDF' %}" class = "btn btn-succes">PDF</a>
 
 						<div class="full-width text-center" style="padding: 30px 0;">
 							
-							{% for prod in object_list %}
+							{% for prod in prods %}
 							<div class="mdl-card mdl-shadow--2dp full-width product-card">
 								<div class="mdl-card__title">
 									<img src="{{prod.img.url}}" width="400" height="200" alt="product">
@@ -57,10 +36,8 @@
 								</div>
 								<div class="mdl-card__actions mdl-card--border">
 									{{prod.name}}
-				
-									<button onclick="abrir_modal_edicion('{% url 'updateProduct' prod.id %}')">Update</button>
-									<button onclick="abrir_modal_borrar('{% url 'deleteProduct' prod.id %}')">Delete</button>
-					
+									<a href = "{% url 'updateProduct' prod.id %}">Modificar</a>
+									<a href = "{% url 'deleteProduct' prod.id %}">Eliminar</a>					
 								</div>
 							</div>
 							{% endfor %}

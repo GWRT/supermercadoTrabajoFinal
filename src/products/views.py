@@ -1,38 +1,56 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, redirect
 from .forms import ProductForm
 from .models import Product
 from django.http import HttpResponse
-from django.views.generic import View, TemplateView, ListView, UpdateView, CreateView, DeleteView
-from django.urls import reverse_lazy
+from django.views.generic import View
 from .utils import render_to_pdf
+from historial.utils import historial
 
 # Create your views here.
-class listProduct(ListView):
-	model = Product
-	template_name = 'products/products.html'
-	queryset = Product.objects.all()
+def listProduct(request):
+	context = {
+		'prods' : Product.objects.all(),
+	}	
+	return render(request, 'products/products.html',context)
 
-class addProduct(CreateView):
-	model = Product
-	template_name = 'products/add.html'
-	form_class = ProductForm
-	success_url = reverse_lazy('listProduct')
+def addProduct(request):
+	context = {
+		'form' : ProductForm()
+	}
 
-class deleteProduct(DeleteView):
-	model = Product
-	success_url = reverse_lazy('listProduct')
+	if request.method == 'POST':
+		formulario = ProductForm(request.POST)
+		if formulario.is_valid():
+			prod = formulario.save(commit=False)
+			usuario = request.user
+			historial(prod, usuario, 1)
+			prod.save()
+			return redirect(to = 'listProduct')
+		context['form'] = formulario
 
-	def post(self, request, *args, **kwargs):
-		object = self.get_object()
-		return object
+	return render(request, 'products/add.html', context)	
 
-	queryset = Product.objects.get()
+def deleteProduct(request, id):
+	prod = Product.objects.get(id = id)
+	usuario = request.user
+	historial(prod, usuario, 2)
+	prod.delete()
 
-class updateProduct(UpdateView):
-	model = Product
-	template_name = 'products/update.html'
-	form_class = ProductForm
-	success_url = reverse_lazy('listProduct')
+	return redirect(to='listProduct')
+
+def updateProduct(request, id):
+	prod = Product.objects.get(id = id)
+
+	if request.method == 'POST':
+		form = ProductForm(data=request.POST, instance=prod)
+
+		if form.is_valid():
+			producto = form.save(commit=False)
+			usuario = request.user
+			historial(producto, usuario, 3)
+			return redirect('listProduct')
+
+	return render(request, 'products/update.html',{'form':ProductForm(instance=prod)})
 
 class listProductPDF(View):
 	def get(self, request, *args, **kwargs):
