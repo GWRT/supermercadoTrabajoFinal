@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'provider',
     'categoria',
     'products',
+    'historial',
 ]
 
 MIDDLEWARE = [
