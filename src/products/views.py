@@ -19,7 +19,7 @@ def addProduct(request):
 	}
 
 	if request.method == 'POST':
-		formulario = ProductForm(request.POST)
+		formulario = ProductForm(request.POST, files=request.FILES)
 		if formulario.is_valid():
 			formulario.save()
 			prod = formulario.save(commit=False)
@@ -43,7 +43,7 @@ def updateProduct(request, id):
 	prod = Product.objects.get(id = id)
 
 	if request.method == 'POST':
-		form = ProductForm(data=request.POST, instance=prod)
+		form = ProductForm(data=request.POST, instance=prod, files=request.FILES)
 
 		if form.is_valid():
 			producto = form.save(commit=False)
