@@ -1,17 +1,22 @@
 from django.shortcuts import render, redirect
-from .forms import AccountForm
+from .forms import AccountForm, UpdateForm, AccountUpdate
 from .models import Account
 from django.contrib.auth.models import User, auth
 # Create your views here.
 def account(request):
-    return render(request, 'accounts/account.html')
+	if request.method == 'POST':
+		u_form = UpdateForm(request.POST, instance=request.user)
+		a_form = AccountUpdate(request.POST, request.FILES, instance=request.user.account)
+		if u_form.is_valid() and a_form.is_valid:
+			u_form.save()
+			a_form.save()
+			return redirect('account')
+	else: 
+		u_form = UpdateForm(instance=request.user)
+		a_form = AccountUpdate(instance=request.user.account)
 
-def update(request):
-    account = Account.objects.get(id=request.user.id)
-    form = AccountForm(instance=account)
-    if request.method == 'POST':
-        form = AccountForm(request.POST, request.FILES)
-        if forms.is_valid():
-            forms.save() 
-    context = {'form': form}
-    return render(request, 'accounts/update.html', context)
+	context = {
+	'u_form' : u_form,
+	'a_form' : a_form,
+	}
+	return render(request, 'accounts/account.html', context)
