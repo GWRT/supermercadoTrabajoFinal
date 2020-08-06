@@ -22,8 +22,8 @@ from indexPagina.views import home
 from django.conf.urls.static import static
 
 urlpatterns = [
+    path('home/', home, name='homePage'),
     path('admin/', admin.site.urls),
-    path('',home, name='homePage'),
     path('provider/', providers, name='provider'),
     path('crear/', create, name='crearProveedor'),
     path('modificar/<id>/', modificar, name='modificarProveedor'),
@@ -33,6 +33,6 @@ urlpatterns = [
     path('modificarCategoria/<id>/', modificarCategoria, name='modificarCategoria'),
     path('eliminarCategoria/<id>/', eliminarCategoria, name='eliminarCategoria'),
     path('products/',include('products.urls')),
-    path('accounts/',include('accounts.urls')),
+    path('',include('administrators.urls')), 
 ]
 urlpatterns = urlpatterns + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
