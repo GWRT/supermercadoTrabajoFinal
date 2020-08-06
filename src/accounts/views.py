@@ -4,9 +4,7 @@ from .models import Account
 from django.contrib.auth.models import User, auth
 # Create your views here.
 def account(request):
-    account = Account.objects.get(id=request.user.id)
-    context = {'account': account}
-    return render(request, 'accounts/account.html', context)
+    return render(request, 'accounts/account.html')
 
 def update(request):
     account = Account.objects.get(id=request.user.id)
@@ -14,6 +12,6 @@ def update(request):
     if request.method == 'POST':
         form = AccountForm(request.POST, request.FILES)
         if forms.is_valid():
-            forms.save()
+            forms.save() 
     context = {'form': form}
     return render(request, 'accounts/update.html', context)
