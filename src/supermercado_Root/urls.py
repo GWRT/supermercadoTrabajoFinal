@@ -19,6 +19,7 @@ from django.conf import settings
 from provider.views import providers, modificar, eliminar, create
 from categoria.views import categories, crearCategoria, modificarCategoria, eliminarCategoria
 from indexPagina.views import home
+from historial.views import history
 from django.conf.urls.static import static
 
 urlpatterns = [
@@ -34,5 +35,6 @@ urlpatterns = [
     path('eliminarCategoria/<id>/', eliminarCategoria, name='eliminarCategoria'),
     path('products/',include('products.urls')),
     path('accounts/',include('accounts.urls')),
+    path('historial/', history, name = 'historial'),
 ]
 urlpatterns = urlpatterns + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -23,3 +23,6 @@ class Product(models.Model):
 	)
 	img = models.ImageField(upload_to='pics')
 
+	def __str__(self):
+		return self.name
+

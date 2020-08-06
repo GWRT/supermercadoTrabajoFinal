@@ -10,7 +10,7 @@ type_entry = [
     (3, "Actualizado")
 ]
 class History(models.Model):
-    prod = models.ForeignKey(Product, on_delete = models.CASCADE)
+    prod = models.ForeignKey(Product, on_delete = models.SET_NULL, null=True)
     user = models.ForeignKey(User, on_delete = models.CASCADE)
     date = models.DateTimeField(auto_now=True)
     entry = models.IntegerField(
