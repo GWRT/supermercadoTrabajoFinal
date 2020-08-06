@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Lista de Productos</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  </head>
+  <body>
+    <header class="clearfix">
+      <h1>Tabla de Productos</h1>
+      <div id="project">
+        {% if user.is_authenticated %}
+        <div><span>Nombre</span> Tabla de Productos</div>
+        <div><span>Usuario</span> {{ user.username }}</div>
+        <div><span>Nombre</span> {{ user.first_name }}</div>
+        <div><span>Email</span> {{ user.email }}</div>
+        {% endif %}
+      </div>
+    </header>
+      <table>
+        <thead>
+            <th>Codigo</th>
+            <th>Nombre</th>
+            <th>Unidades</th>
+            <th>Precio</th>
+            <th>Descuento</th>
+            <th>Categoria</th>
+            <th>Proveedor</th>
+            <th>Estado</th>
+        </thead>
+        <tbody>
+        </tbody>
+            {% for product in products %}
+            <tr>
+                <td>{{ product.barcode }}</td>
+                <td>{{ product.name }}</td>
+                <td>{{ product.units }}</td>
+                <td>{{ product.price }}</td>
+                <td>{{ product.disc }}</td>
+                <td>{{ product.cat }}</td>
+                <td>{{ product.prov }}</td>
+                {% if product.stat == 1 %}
+                    <td>Disponible</td>
+                {% else %}
+                    <td>No Disponible</td>
+                {% endif %}     
+            </tr>
+            {% endfor %}
+        </tbody>  
+      </table>
+  </body>
+</html>

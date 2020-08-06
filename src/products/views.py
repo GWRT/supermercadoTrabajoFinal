@@ -1,8 +1,10 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .forms import ProductForm
 from .models import Product
-from django.views.generic import TemplateView, ListView, UpdateView, CreateView, DeleteView
+from django.http import HttpResponse
+from django.views.generic import View, TemplateView, ListView, UpdateView, CreateView, DeleteView
 from django.urls import reverse_lazy
+from .utils import render_to_pdf
 
 # Create your views here.
 class listProduct(ListView):
@@ -25,4 +27,13 @@ class updateProduct(UpdateView):
 	template_name = 'products/update.html'
 	form_class = ProductForm
 	success_url = reverse_lazy('listProduct')
+
+class listProductPDF(View):
+	def get(self, request, *args, **kwargs):
+		products = Product.objects.all()
+		data = {
+			'products' : products
+		}
+		pdf = render_to_pdf('products/tablaProductos.html', data)
+		return HttpResponse(pdf, content_type = 'application/pdf')
 
