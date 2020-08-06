@@ -4,12 +4,8 @@ from .models import Product
 from django.http import HttpResponse
 from django.views.generic import View
 from .utils import render_to_pdf
-<<<<<<< HEAD
-from django.contrib.auth.models import User
-
-=======
+#from django.contrib.auth.models import User
 from historial.utils import historial
->>>>>>> rama4
 
 # Create your views here.
 def listProduct(request):
