@@ -5,6 +5,6 @@ from .views import *
 
 urlpatterns = [
     path('', views.account, name='account'),
-    path('update', views.update, name='update'),
+    path('cpassword', views.cpassword, name="cpassword")
 ]
 

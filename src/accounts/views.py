@@ -1,12 +1,44 @@
 from django.shortcuts import render, redirect
-from .forms import AccountForm
+from .forms import AccountForm, UpdateForm, AccountUpdate
 from .models import Account
 from django.contrib.auth.models import User, auth
+from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth import update_session_auth_hash
+
 # Create your views here.
 <<<<<<< HEAD
 def account(request):
-    return render(request, 'accounts/account.html')
+	if request.method == 'POST':
+		u_form = UpdateForm(request.POST, instance=request.user)
+		a_form = AccountUpdate(request.POST, request.FILES, instance=request.user.account)
+		if u_form.is_valid() and a_form.is_valid:
+			u_form.save()
+			a_form.save()
+			return redirect('account')
+	else: 
+		u_form = UpdateForm(instance=request.user)
+		a_form = AccountUpdate(instance=request.user.account)
 
+	context = {
+	'u_form' : u_form,
+	'a_form' : a_form,
+	}
+	return render(request, 'accounts/account.html', context)
+
+def cpassword(request):
+	if request.method == 'POST':
+		form = PasswordChangeForm(data=request.POST, user=request.user)
+		if form.is_valid():
+			form.save()
+			update_session_auth_hash(request, form.user)
+			return redirect('account')
+
+		else:
+			return redirect('account')
+	else: 
+		form = PasswordChangeForm(user=request.user)
+
+<<<<<<< HEAD
 def update(request):
     account = Account.objects.get(id=request.user.id)
     form = AccountForm(instance=account)
@@ -57,3 +89,9 @@ def logout(request):
 	auth.logout(request)
 	return redirect('/')
 >>>>>>> 459d354b9c2272a5fc640cded2edff0c46bcfa03
+=======
+	context = {
+	'form' : form,
+	}
+	return render(request, 'accounts/password.html', context)
+>>>>>>> rama2

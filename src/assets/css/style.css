@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 a {
   color: #5D6975;
   text-decoration: underline;
@@ -16,7 +15,7 @@ body {
   font-family: Arial;
 }
 
-header {
+header { 
   padding: 10px 0;
   margin-bottom: 30px;
 }
@@ -84,9 +83,3 @@ table td {
   vertical-align: top;
 }
 
-=======
-
-*{
-  color: red;
-}
->>>>>>> rama2

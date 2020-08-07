@@ -10,6 +10,13 @@
                     Nombre: {{ user.first_name }}<br>
                     Apellido: {{ user.last_name }}
         </div>
+        <form class="" action="" method="POST" enctype="multipart/form-data">
+                  {% csrf_token %}
+                  {{u_form}}
+                  {{a_form}}
+        <input type="submit" value="Registrarse">
+        </form>
+        <a href="./cpassword">password</a>
         
     </div>
 {% endblock %}
