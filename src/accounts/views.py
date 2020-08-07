@@ -2,6 +2,9 @@ from django.shortcuts import render, redirect
 from .forms import AccountForm, UpdateForm, AccountUpdate
 from .models import Account
 from django.contrib.auth.models import User, auth
+from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth import update_session_auth_hash
+
 # Create your views here.
 def account(request):
 	if request.method == 'POST':
@@ -20,3 +23,21 @@ def account(request):
 	'a_form' : a_form,
 	}
 	return render(request, 'accounts/account.html', context)
+
+def cpassword(request):
+	if request.method == 'POST':
+		form = PasswordChangeForm(data=request.POST, user=request.user)
+		if form.is_valid():
+			form.save()
+			update_session_auth_hash(request, form.user)
+			return redirect('account')
+
+		else:
+			return redirect('account')
+	else: 
+		form = PasswordChangeForm(user=request.user)
+
+	context = {
+	'form' : form,
+	}
+	return render(request, 'accounts/password.html', context)
