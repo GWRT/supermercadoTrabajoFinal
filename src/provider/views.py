@@ -7,6 +7,7 @@ def providers (request):
 	context = {
 		'provs' : Provider.objects.all(),
 	}	
+
 	return render(request, 'provider/proveedores.html',context)
 
 def create(request):

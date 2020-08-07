@@ -12,13 +12,8 @@
 	<link rel="stylesheet" href="{% static 'css/material-design-iconic-font.min.css' %}">
 	<link rel="stylesheet" href="{% static 'css/jquery.mCustomScrollbar.css' %}">
 	<link rel="stylesheet" href="{% static 'css/main.css' %}">
-<<<<<<< HEAD:src/administrators/templates/administrators/login.html
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script>window.jQuery || document.write('<script src="{% static "js/jquery-1.11.2.min.js" %}><\/script>')</script>
-=======
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js' %}"></script>
-	<script>window.jQuery || document.write('<script src="{% static "js/jquery-1.11.2.min.js" %}"><\/script>')</script>
->>>>>>> 459d354b9c2272a5fc640cded2edff0c46bcfa03:src/templates/accounts/signin.html
 	<script src="{% static 'js/material.min.js' %}" ></script>
 	<script src="{% static 'js/sweetalert2.min.js' %}" ></script>
 	<script src="{% static 'js/jquery.mCustomScrollbar.concat.min.js' %}" ></script>
@@ -31,7 +26,6 @@
 			<p class="text-center" style="font-size: 80px;">
 				<i class="zmdi zmdi-account-circle"></i>
 			</p>
-<<<<<<< HEAD:src/administrators/templates/administrators/login.html
 			<p class="text-center text-condensedLight">Ingresa</p>
 			<form class="" action="" method="post">
                   {% csrf_token %}
@@ -41,26 +35,6 @@
                   <input type="submit" value="Ingresar">
                   <a href="{% url 'signup' %}" button>Registrate</a>
             </form>
-=======
-			<form method="post">
-				<p class="text-center text-condensedLight">Ingresar</p>
-				{% csrf_token %}
-				<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-					<input class="mdl-textfield__input" type="text" id="userName" name="username">
-				    <label class="mdl-textfield__label" for="userName">Usuario</label>
-				</div>
-				<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-				    <input class="mdl-textfield__input" type="password" id="pass" name="password">
-				    <label class="mdl-textfield__label" for="pass">Contraseña</label>
-				</div>
-				<input type="submit" class="mdl-button mdl-js-button mdl-js-ripple-effect" style="color: #3F51B5; margin: 0 auto; display: block;" value="Enviar">
-			</form>
-			<div>
-				{% for message in messages %}
-				<h1>{{message}}</h1>
-				{% endfor %}
-			</div>
->>>>>>> 459d354b9c2272a5fc640cded2edff0c46bcfa03:src/templates/accounts/signin.html
 		</div>
 	</div>
 </body>
