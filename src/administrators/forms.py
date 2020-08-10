@@ -4,12 +4,22 @@ from django.contrib.auth.forms import User
 from accounts.models import Account
 	
 class LoginForm(forms.Form):
-    username = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Usuario'}))
-    password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Costraseña'}))
+    username = forms.CharField(max_length=30, required=False)
+    password = forms.CharField(max_length=30, widget=forms.PasswordInput, required=False)
 
+    def __init__(self, *args, **kwargs):
+        super(LoginForm, self).__init__(*args, **kwargs)
+        for field in self.fields:
+            self.fields[field].widget.attrs = {
+                'class': 'mdl-textfield__input',
+            }
+        self.fields['username'].label = "USUARIO"    
+        self.fields['password'].label = "CONTRASEÑA" 
+    
     class Meta:
         model = User
-        fields = ('username', 'password')
+        fields = ['username', 'password']
+        
 
 class SignUpForm(UserCreationForm):
     username = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Usuario'}))
