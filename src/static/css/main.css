@@ -849,4 +849,5 @@ html, body{
 		right: 122%;
 		text-align: right;
 	}
+	.mdl-textfield{padding-bottom: 24px;}
 }
