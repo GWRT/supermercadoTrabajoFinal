@@ -6,7 +6,7 @@
 					<div class="mdl-cell mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--8-col-desktop mdl-cell--2-offset-desktop">
 						<div class="full-width panel mdl-shadow--2dp">
 							<div class="full-width panel-tittle bg-success text-center tittles">
-								List Providers
+								Lista de Proveedores
 							</div>
 							<div class="full-width panel-content">
 								{% for prov in provs %}
@@ -29,8 +29,12 @@
 												{% endif %}
 											</p>
 										</span>
-										<a class="mdl-list__item-secondary-action" href="{% url 'modificarProveedor' prov.id %}">Modificar</a>
-										<a class="mdl-list__item-secondary-action" href="{% url 'eliminarProveedor' prov.id %}"> El</a>
+										<a class="mdl-list__item-secondary-action" href="{% url 'modificarProveedor' prov.id %}">
+											<i class="zmdi zmdi-edit" style="padding-right: 15px; font-size: 25px;"></i>
+										</a>
+										<a class="mdl-list__item-secondary-action" href="{% url 'eliminarProveedor' prov.id %}">
+											<i class="zmdi zmdi-delete" style="padding-right: 15xp; font-size: 25px;"></i>
+										</a>
 									</div>
 								</div>
 								{% endfor %}

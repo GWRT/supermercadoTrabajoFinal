@@ -1,13 +1,42 @@
 {% extends 'index.html' %}
 {% block content %}
-	<form method="POST">
-		<h4>Modificar Proveedor</h4>
-		{% csrf_token %}
-		{% for field in form %}
-			<label for="field.id_for_label">{{ field.label }}</label>
-			{{ field }}
-			<br>
-		{% endfor %}
-		<input type="submit" name="submit">
-	</form>
+<div class="mdl-tabs__panel is-active" id="tabNewProvider">
+	<div class="mdl-grid">
+		<div class="mdl-cell mdl-cell--12-col">
+			<div class="full-width panel mdl-shadow--2dp">
+				<div class="full-width panel-tittle bg-primary text-center tittles">
+					Modificar Proveedor
+				</div>
+				<div class="full-width panel-content">
+					<form method="POST">
+						{% csrf_token %}
+						<div class="mdl-grid">
+							<div class="mdl-cell mdl-cell--12-col">
+								<legend class="text-condensedLight"><i class="zmdi zmdi-border-color"></i> &nbsp; DATOS</legend><br>
+							</div>
+							{% for field in form %}
+							<div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet">
+								<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+								{{field}}
+								<label class="mdl-textfield__label" for="{{field.id_for_label}}">{{field.label}}</label>
+								<!--<span class="mdl-textfield__error">Invalid number</span>-->
+								</div>
+							</div>
+							{% endfor %}
+						</div>
+						<p class="text-center">
+							<button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored bg-primary" id="btn-addCategory" type="submit">
+								<i class="zmdi zmdi-plus"></i>
+							</button>
+							<div class="mdl-tooltip" for="btn-addCategory">Guardar Proveedor</div>
+						</p>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<style>
+.mdl-textfield{padding-bottom: 27px;}
+</style>
 {% endblock %}

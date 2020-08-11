@@ -11,19 +11,16 @@ def providers (request):
 	return render(request, 'provider/proveedores.html',context)
 
 def create(request):
-	context = {
-		'form' : providerForm()
-	}
-
 	if request.method == 'POST':
 		formulario = providerForm(request.POST)
 		if formulario.is_valid():
 			formulario.save()
-			print('guardado')
 			return redirect(to = 'provider')
-		context['form'] = formulario
+	
+	else:
+		formulario = providerForm(use_required_attribute=False)
 
-	return render(request, 'provider/create.html', context)	
+	return render(request, 'provider/create.html', {'form' : formulario})	
 
 def modificar(request, id):
 	provs = Provider.objects.get(id = id)

@@ -31,4 +31,7 @@ class providerForm(forms.ModelForm):
 		self.fields['direccion'].widget.attrs.update({'class':'mdl-textfield__input'})	
 		self.fields['email'].widget.attrs.update({'class':'mdl-textfield__input'})	
 		self.fields['telefono'].widget.attrs.update({'class':'mdl-textfield__input'})
-		self.fields['estado'].widget.attrs.update({'class':'mdl-checkbox__input'})					
+		self.fields['estado'].widget.attrs.update({'class':'mdl-checkbox__input'})
+
+		for field in self.fields:
+			self.fields[field].required = True					

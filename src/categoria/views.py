@@ -17,7 +17,6 @@ def crearCategoria(request):
 		formulario = categoryForm(request.POST)
 		if formulario.is_valid():
 			formulario.save()
-			print('guardado')
 			return redirect(to = 'category')
 
 		context['form'] = formulario
