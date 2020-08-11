@@ -8,7 +8,8 @@ class Pedido(models.Model):
 	user = models.ForeignKey(Client, on_delete=models.CASCADE,null=True,blank=True)
 	item = models.ForeignKey(Producto, on_delete=models.CASCADE,null=True,blank=True)
 	quantity = models.IntegerField(default=1)
-
+	pay = models.BooleanField(default=False)
+	
 	def get_price(self):
 		return self.quantity * self.item.price
 
