@@ -33,7 +33,7 @@
 				{% for fields in form %}
 					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 						{{ fields }}
-						<label class="form-control" for='{{ fields.id_for_label }}'>{{ fields.label }}</label>
+						<label class="mdl-textfield__label" for='{{ fields.id_for_label }}'>{{ fields.label }}</label>
 					</div>	
                 {% endfor %}
                 <input type="submit" value="Ingresar" class="mdl-button mdl-js-button mdl-js-ripple-effect" style="color: #3F51B5; margin: 0 auto; display: block;">

@@ -22,12 +22,13 @@ def login(request):
 	return render(request, 'administrators/login.html', context)
 
 def signup(request):
-	form = SignUpForm()
 	if request.method == 'POST':
 		form = SignUpForm(request.POST)  
 		if form.is_valid():
 			form.save()
 			return redirect('/')
+	else:
+		form = SignUpForm(use_required_attribute=False)		
 			
 	context = {'form': form}
 	return render(request, 'administrators/signup.html', context)

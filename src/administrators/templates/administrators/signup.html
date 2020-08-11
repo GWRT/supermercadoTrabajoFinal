@@ -28,14 +28,20 @@
 			</p>
 			<p class="text-center text-condensedLight">Registrate</p>
 			<form class="" action="" method="post">
-                  {% csrf_token %}
-                  {% for fields in form %}
-                  {{ fields }}	
-                  {% endfor %}
-                  <input type="submit" value="Registrarse">
-                  <a href="{% url 'login' %}" button>Regresar</a>
+                {% csrf_token %}
+                {% for fields in form %}
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+					{{ fields }}
+					<label class="mdl-textfield__label" for='{{ fields.id_for_label }}'>{{ fields.label }}</label>
+					</div>
+                {% endfor %}
+                <input type="submit" value="Registrarse" class="mdl-button mdl-js-button mdl-js-ripple-effect" style="color: #3F51B5; margin: 0 auto; display: block;">
+            	<a href="{% url 'login' %}" button class="mdl-button mdl-js-button mdl-js-ripple-effect" style="color: #3F51B5; margin: 0 auto; display: block;">INGRESAR</a>
             </form>
 		</div>
 	</div>
+	<style>
+		.mdl-textfield{padding-bottom: 27px;}
+	</style>
 </body>
 </html>
