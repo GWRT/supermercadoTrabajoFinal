@@ -26,6 +26,9 @@ def update(request, pk):
 			pro.units += mov.quant
 		else:
 			pro.units -= mov.quant
+			if pro.units < 0 :
+				mov.delete()
+				return redirect('inventory')
 		pro.save()
 		return redirect('inventory')
 
