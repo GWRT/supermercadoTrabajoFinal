@@ -22,6 +22,14 @@ class clientRegister(UserCreationForm):
 			'username' : 'usuario',
 		}
 
+	def __init__(self, *args, **kwargs):
+		super(clientRegister, self).__init__(*args, **kwargs)
+		for field in self.fields:
+			self.fields[field].widget.attrs = {
+				'class': 'mdl-textfield__input',
+			}
+
+
 	@transaction.atomic
 	def save(self):
 		user = super().save(commit=False)
@@ -80,3 +88,20 @@ class ClientUpdate(forms.ModelForm):
     class Meta:
         model = Client
         fields = ['photo']
+
+class LoginForm(forms.Form):
+    username = forms.CharField(max_length=30)
+    password = forms.CharField(max_length=30, widget=forms.PasswordInput)
+
+    def __init__(self, *args, **kwargs):
+        super(LoginForm, self).__init__(*args, **kwargs)
+        for field in self.fields:
+            self.fields[field].widget.attrs = {
+                'class': 'mdl-textfield__input',
+            }
+        self.fields['username'].label = "USUARIO"    
+        self.fields['password'].label = "CONTRASEÑA" 
+    
+    class Meta:
+        model = User
+        fields = ['username', 'password']		

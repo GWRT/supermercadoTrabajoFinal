@@ -37,10 +37,15 @@
             <label>{{field.label}}</label>
             {{field}}
             {% endfor %}
-      <button type="submit">Iniciar</button> 
+      <button type="submit" class="mdl-button mdl-js-button mdl-js-ripple-effect" 
+      style="color: #3F51B5; margin: 0 auto; display: block; text-decoration: none;">REGISTRAR</button> 
 
       </form>
-      <a class="button button-account" href="{% url 'loginUser' %}">Login Now</a>
+      <a class="mdl-button mdl-js-button mdl-js-ripple-effect" 
+          style="color: #3F51B5; margin: 0 auto; display: block; text-decoration: none;"
+          href="{% url 'loginUser' %}">
+        INGRESAR
+      </a>
     </div>
   </div>
 </body>

@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic import CreateView, ListView
 from django.contrib.auth import login, logout, authenticate
-from .form import clientRegister, adminRegister, UpdateUser, AdmUpdate
+from .form import clientRegister, adminRegister, UpdateUser, AdmUpdate, LoginForm
 from .models import Client, Adm, User
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
@@ -41,7 +41,7 @@ class registerAdmin(CreateView):
 
 def loginUser(request):
 	if request.method == 'POST':
-		form = AuthenticationForm(data=request.POST)
+		form = LoginForm(data=request.POST)
 		if form.is_valid():
 			username = form.cleaned_data['username']
 			password = form.cleaned_data['password']
@@ -54,8 +54,10 @@ def loginUser(request):
 
 		else:
 			messages.error(request, "Contraseña o usuario incorrectos")
+	else:
+		form = LoginForm(use_required_attribute=False)		
 
-	context = {'form': AuthenticationForm()}
+	context = {'form': form}
 	return render(request, 'cuentas/login.html', context)
 	
 
