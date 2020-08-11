@@ -1,8 +1,7 @@
 from django.shortcuts import render, redirect
-from .forms import AccountForm, UpdateForm, AccountUpdate
+from .forms import AccountForm, UpdateForm, AccountUpdate, PasswordChangeForm
 from .models import Account
 from django.contrib.auth.models import User, auth
-from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth import update_session_auth_hash
 
 # Create your views here.
