@@ -29,8 +29,12 @@
                   <small>Cat: {{prod.cat}} </small>
                 </div>
                 <div class="mdl-card__actions mdl-card--border">
-                  
-                    <a href="{% url 'pedidos' prod.id %}">Comprar</a>
+                  {% if user.is_superuser %}
+                  <div></div>
+                  {% else %}
+                  <a href="{% url 'pedidos' prod.id %}">Comprar</a>
+                  {% endif %}
+
                   {{prod.name}}
 
                 </div>
