@@ -19,6 +19,8 @@ def update(request, pk):
 	form = MovForm(request.POST)
 	if form.is_valid(): 
 		mov = form.save()
+		mov.prod=pro
+		mov.save()
 		if mov.entry == 1:
 			pro.units += mov.quant
 		else:
