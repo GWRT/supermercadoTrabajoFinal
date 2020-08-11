@@ -3,6 +3,7 @@ from products.models import Product
 from django.http import HttpResponse
 from django.views.generic import View, TemplateView, ListView, UpdateView, CreateView, DeleteView
 from .forms import MovForm
+from .models import Movement
 
 # Create your views here.
 
@@ -29,4 +30,9 @@ def update(request, pk):
 		return redirect('inventory')
 
 	context = {'form':form}
-	return render(request, 'products/add.html', context)	
+	return render(request, 'movements/create.html', context)	
+
+class registro(ListView):
+	model = Movement
+	template_name = 'movements/list.html'
+	queryset = Movement.objects.all()
