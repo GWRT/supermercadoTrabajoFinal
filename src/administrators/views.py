@@ -16,7 +16,7 @@ def login(request):
 				return redirect('/home')
 
 	else:
-		form = LoginForm()			
+		form = LoginForm(use_required_attribute=False)			
 
 	context = {'form': form}
 	return render(request, 'administrators/login.html', context)
