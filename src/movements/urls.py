@@ -4,4 +4,6 @@ from . import views
 
 urlpatterns = [
     path('',views.inventory, name='inventory'),
+    path('update/<int:pk>/',views.update,name='update'),
+
 ]

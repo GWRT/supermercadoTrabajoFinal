@@ -6,20 +6,25 @@ from .forms import MovForm
 
 # Create your views here.
 
+
 def inventory(request):
 	context = {
 		'prods' : Product.objects.all(),
-		'form' : MovForm()
-	}	
-	if request.method == 'POST':
-		formulario = MovForm(request.POST, files=request.FILES)
-		if formulario.is_valid():
-			formulario.save()
-			mov = formulario.save(commit=False)
-			usuario = request.user
-			historial(prod, usuario, 1)
-			
-			return redirect(to = 'listProduct')
-		context['form'] = formulario
 
+	}	
 	return render(request, 'movements/inventory.html',context)
+
+def update(request, pk):
+	pro = Product.objects.get(id=pk)
+	form = MovForm(request.POST)
+	if form.is_valid(): 
+		mov = form.save()
+		if mov.entry == 1:
+			pro.units += mov.quant
+		else:
+			pro.units -= mov.quant
+		pro.save()
+		return redirect('inventory')
+
+	context = {'form':form}
+	return render(request, 'products/add.html', context)	

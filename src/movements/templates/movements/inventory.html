@@ -19,19 +19,10 @@
 			<tr>
 				<td class="mdl-data-table__cell--non-numeric">{{prod.name}}</td>
 				<td>Product Code</td>
-				<td>7</td>
-				<td>$77</td>
-				<td><button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect"><i class="zmdi zmdi-more"></i></button></td>
-		<td>
-			<form method="POST"> 
-				{% csrf_token %}
-				{% for fields in form %}	
-				{{ fields }}
-				{% endfor %}
-				<input type="submit" value="Enviar">
-				</div>
-			</form>
-		</td>
+				<td>{{prod.units}}</td>
+				<td>{{prod.price}}</td>
+				<td><a href = "{% url 'update' prod.id %}">Modificar</a></td>
+		
 			</tr>
 		
 			

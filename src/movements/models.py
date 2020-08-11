@@ -9,7 +9,7 @@ type_entry = [
     (2, "Salida"),
 ]
 class Movement(models.Model):
-    prod = models.OneToOneField(Product, on_delete = models.SET_NULL, null=True)
+    prod = models.ForeignKey(Product, on_delete = models.SET_NULL, null=True)
     entry = models.IntegerField(
         null=False, blank=False,
 		choices=type_entry,
