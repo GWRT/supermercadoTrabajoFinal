@@ -37,5 +37,7 @@ urlpatterns = [
     path('',include('administrators.urls')), 
     path('accounts/',include('accounts.urls')), 
     path('historial/', history, name = 'historial'),
+    path('inventory/',include('movements.urls')), 
+
 ]
 urlpatterns = urlpatterns + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

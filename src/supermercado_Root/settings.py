@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'administrators',
     'historial',
     'accounts',
+    'movements'
 ]
 
 MIDDLEWARE = [
