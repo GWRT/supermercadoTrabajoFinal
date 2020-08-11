@@ -23,6 +23,10 @@ class UpdateForm(forms.ModelForm):
         super(UpdateForm, self).__init__(*args, **kwargs)
         for field in self.fields:
             self.fields[field].help_text = None
+            for field in self.fields:
+                self.fields[field].widget.attrs = {
+                    'class': 'form-control',
+                }
         
 
 class AccountUpdate(forms.ModelForm):
