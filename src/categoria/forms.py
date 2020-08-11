@@ -17,5 +17,5 @@ class categoryForm(forms.ModelForm):
 		super(categoryForm,self).__init__(*args,**kwargs)
 		self.fields['name'].widget.attrs.update({'class':'mdl-textfield__input'})
 		self.fields['desc'].widget.attrs.update({'class':'mdl-textfield__input'})
-		self.fields['name'].required = False
-		self.fields['desc'].required = False	
+		self.fields['name'].required = True
+		self.fields['desc'].required = True	

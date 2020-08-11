@@ -9,19 +9,16 @@ def categories(request):
 	return render(request, 'categoria/categorias.html', {'cats':cats})
 
 def crearCategoria(request):
-	context = {
-		'form' : categoryForm()
-	}
-
 	if request.method == 'POST':
 		formulario = categoryForm(request.POST)
 		if formulario.is_valid():
 			formulario.save()
 			return redirect(to = 'category')
 
-		context['form'] = formulario
+	else:
+		formulario = categoryForm(use_required_attribute=False)
 
-	return render(request, 'categoria/create.html', context)	
+	return render(request, 'categoria/create.html', {'form' : formulario})	
 
 def modificarCategoria(request, id):
 	cats = Category.objects.get(id = id)
