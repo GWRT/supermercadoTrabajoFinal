@@ -18,8 +18,25 @@ class UpdateForm(forms.ModelForm):
         model = User
         fields = ('username', 'email')
 
+    
+    def __init__(self, *args, **kwargs):
+        super(UpdateForm, self).__init__(*args, **kwargs)
+        for field in self.fields:
+            self.fields[field].widget.attrs = {
+                'class': 'form-control',
+            }
+            self.fields[field].help_text = None
+        
 
 class AccountUpdate(forms.ModelForm):
     class Meta:
         model = Account
         fields = ['photo']
+
+    
+    def __init__(self, *args, **kwargs):
+        super(AccountUpdate, self).__init__(*args, **kwargs)
+        for field in self.fields:
+            self.fields[field].widget.attrs = {
+                'class': 'form-control',
+            }
