@@ -5,7 +5,6 @@ from accounts.models import Account
 
 # Create your views here.
 def login(request):
-	form = LoginForm()
 	if request.method == 'POST':
 		form = LoginForm(request.POST)
 		if form.is_valid():
@@ -15,6 +14,9 @@ def login(request):
 			if user is not None:
 				auth.login(request, user)
 				return redirect('/home')
+
+	else:
+		form = LoginForm()			
 
 	context = {'form': form}
 	return render(request, 'administrators/login.html', context)

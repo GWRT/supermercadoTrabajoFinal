@@ -4,8 +4,8 @@ from django.contrib.auth.forms import User
 from accounts.models import Account
 	
 class LoginForm(forms.Form):
-    username = forms.CharField(max_length=30, required=False)
-    password = forms.CharField(max_length=30, widget=forms.PasswordInput, required=False)
+    username = forms.CharField(max_length=30)
+    password = forms.CharField(max_length=30, widget=forms.PasswordInput)
 
     def __init__(self, *args, **kwargs):
         super(LoginForm, self).__init__(*args, **kwargs)
