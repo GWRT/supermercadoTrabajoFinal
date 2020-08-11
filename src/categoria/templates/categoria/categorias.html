@@ -16,7 +16,9 @@
 											<span>{{cat.name}}</span>
 											<span class="mdl-list__item-sub-title">{{cat.desc}}</span>
 										</span>
-										<a class="mdl-list__item-secondary-action" href="{% url 'modificarCategoria' cat.id %}">Modificar</a>
+										<a class="mdl-list__item-secondary-action" href="{% url 'modificarCategoria' cat.id %}">
+											<i class="glyphicon glyphicon-trash"></i>
+										</a>
 										<a class="mdl-list__item-secondary-action" href="{% url 'eliminarCategoria' cat.id %}"> El</a>
 									</div>
 									<li class="full-width divider-menu-h"></li>
