@@ -36,4 +36,4 @@ class listProductPDF(View):
 			'products' : products
 		}
 		pdf = render_to_pdf('products/tablaProductos.html', data)
-		return HttpResponse(pdf, content_type = 'application/pdf')
+		return HttpResponse(pdf, content_type = 'application/pdf') 

@@ -26,6 +26,5 @@ urlpatterns = [
     path('categorias/',include('categorias.urls')),
     path('proveedores/',include('proveedores.urls')),
     path('movimientos/',include('movimientos.urls')),
-    path('pedidos/<int:pk>/',include('pedidos.urls')),
 ]
 urlpatterns = urlpatterns + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

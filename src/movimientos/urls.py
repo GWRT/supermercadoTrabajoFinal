@@ -6,4 +6,5 @@ urlpatterns = [
     path('',views.movimientos, name='movimientos'),
     path('update/<int:pk>/',views.update,name='update'),
     path('registro/',views.registro.as_view(),name='registro'),
+    
 ]
