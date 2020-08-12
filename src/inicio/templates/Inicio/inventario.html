@@ -29,8 +29,8 @@
                   <small>Cat: {{prod.cat}} </small>
                 </div>
                 <div class="mdl-card__actions mdl-card--border">
-                  <button data-product="{{prod.id}}" data-action="add" class='update-cart'>add</button>
-
+                  
+                    <a href="{% url 'pedidos' prod.id %}">Comprar</a>
                   {{prod.name}}
 
                 </div>
