@@ -17,6 +17,8 @@ def checkout(request, pk):
 		pro = ped.item
 		pro.units -= ped.quantity
 		pro.save()
+		ped.pay = True
+		ped.save()
 		return redirect('Inicio')
 
 	return render(request, 'pedidos/checkout.html', context)
@@ -39,3 +41,13 @@ class listVentas(ListView):
 	model = Venta
 	template_name = 'pedidos/listVentas.html'
 	queryset = Venta.objects.all()
+
+class listPed(ListView):
+	model = Pedido
+	template_name = 'pedidos/listPed.html'
+	queryset = Pedido.objects.all()
+
+	def get_queryset(self):
+		return Pedido.objects.filter(
+			user=self.request.user.client
+		)

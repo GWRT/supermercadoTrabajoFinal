@@ -1,0 +1,30 @@
+{% extends 'index_2.html' %}
+{% block content %}
+	
+
+		<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp full-width table-responsive">
+		<thead>
+			<tr>
+				<th class="mdl-data-table__cell--non-numeric">Name</th>
+				
+				<th>Stock</th>
+				<th>Action</th>
+		
+			</tr>
+		</thead>
+		<tbody>
+			{% for ped in object_list %}
+			<tr>
+				<td class="mdl-data-table__cell--non-numeric">{{ped.item}}</td>
+				<td>{{ped.quantity}}</td>
+				{% if ped.pay == True %}
+				<td>Pagado</td>
+				{% else %}
+				<td><a href="{% url 'checkout' ped.id %}">Pagar</a> </td>
+				{% endif %}
+			</tr>
+						
+			{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}

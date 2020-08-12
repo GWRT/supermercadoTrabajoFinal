@@ -82,6 +82,19 @@ const csrftoken = getToken('csrftoken');
               </div>
             </a>
           </li>
+          {% if user.is_authenticated and user.is_client %}
+          <li class="full-width divider-menu-h"></li>
+          <li class="full-width">
+            <a href="{% url 'listPed' %}" class="full-width">
+              <div class="navLateral-body-cl">
+                <i class="zmdi zmdi-washing-machine"></i>
+              </div>
+              <div class="navLateral-body-cr">
+                HISTORIAL
+              </div>
+            </a>
+          </li>
+          {% endif %}
           
         </ul>
       </nav>
