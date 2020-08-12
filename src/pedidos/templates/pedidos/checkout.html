@@ -14,15 +14,17 @@
 		</thead>
 		<tbody>
 			<tr>
-				<td class="mdl-data-table__cell--non-numeric">{{cline.name}}</td>
-				<td>{{ped.quant}}</td>
-				<td>entrada</td>					
-								
+			
+				<td>{{ped.user}}</td>
+				<td>{{ped.item}}</td>
+				<td>{{ped.quantity}}</td>				
 			</tr>
 		
-			
-			
-			{% endfor %}
 		</tbody>
+
 	</table>
+	<form method="POST">
+		{% csrf_token %}
+	<button type="submit">Pagar</button> 
+	</form>
 {% endblock %}
