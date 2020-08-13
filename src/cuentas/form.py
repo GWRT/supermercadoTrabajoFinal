@@ -1,4 +1,4 @@
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
 from django.db import transaction
 from .models import Client, Adm, User
 from django import forms
@@ -132,4 +132,18 @@ class LoginForm(forms.Form):
     
     class Meta:
         model = User
-        fields = ['username', 'password']		
+        fields = ['username', 'password']	
+
+class PasswordChangeForm(PasswordChangeForm):
+   
+	def __init__(self, *args, **kwargs):
+		super(PasswordChangeForm, self).__init__(*args, **kwargs)
+		for field in self.fields:
+			self.fields[field].help_text = None
+			for field in self.fields:
+				self.fields[field].widget.attrs = {
+					'class': 'form-control',
+                }
+		self.fields['old_password'].label = 'Introduzca su antigua contraseña'
+		self.fields['new_password1'].label = 'Introduzca su nueva contraseña'
+		self.fields['new_password2'].label = 'Repita su nueva contraseña'

@@ -1,11 +1,10 @@
 from django.shortcuts import render, redirect
 from django.views.generic import CreateView, ListView
 from django.contrib.auth import login, logout, authenticate
-from .form import clientRegister, adminRegister, UpdateUser, AdmUpdate, LoginForm
+from .form import clientRegister, adminRegister, UpdateUser, AdmUpdate, LoginForm, PasswordChangeForm
 from .models import Client, Adm, User
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
-from django.contrib.auth.forms import PasswordChangeForm
 
 
 # Create your views here. 
