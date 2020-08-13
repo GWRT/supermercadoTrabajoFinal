@@ -53,12 +53,6 @@ class adminRegister(UserCreationForm):
 			'email',
 			'username',
 		]
-		labels = {
-			'first_name' : 'nombre',
-			'last_name' : 'apellido',
-			'email' : 'email',
-			'username' : 'usuario',
-		}
 
 	@transaction.atomic 
 	def save(self):
@@ -92,11 +86,31 @@ class UpdateUser(forms.ModelForm):
     class Meta:
         model = User
         fields = ('username', 'email')
+	
+
+    def __init__(self, *args, **kwargs):
+        super(UpdateUser, self).__init__(*args, **kwargs)
+        for field in self.fields:
+            self.fields[field].help_text = None
+            for field in self.fields:
+                self.fields[field].widget.attrs = {
+                    'class': 'form-control',
+                }
 
 class AdmUpdate(forms.ModelForm):
     class Meta:
         model = Adm
         fields = ['photo']
+
+	
+    def __init__(self, *args, **kwargs):
+        super(AdmUpdate, self).__init__(*args, **kwargs)
+        for field in self.fields:
+            self.fields[field].help_text = None
+            for field in self.fields:
+                self.fields[field].widget.attrs = {
+                    'class': 'form-control',
+                }	
 
 class ClientUpdate(forms.ModelForm):
     class Meta:
