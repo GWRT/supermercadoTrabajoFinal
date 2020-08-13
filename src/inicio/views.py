@@ -1,10 +1,11 @@
 from django.shortcuts import render 
-from django.http import JsonResponse
 from productos.models import Producto
 from django.views.generic import View, TemplateView, ListView, UpdateView, CreateView, DeleteView
-import json
-from cuentas.models import Client
-
+from cuentas.models import Client, Adm
+from productos.models import Producto
+from categorias.models import Categoria
+from proveedores.models import Proveedor
+from pedidos.models import Venta
 
 # Create your views here.
 
@@ -15,7 +16,14 @@ def Contactos(request):
 	return render(request, 'Inicio/contactos.html')
 
 def Administracion(request):
-	return render(request, 'Inicio/administracion.html')
+	countC = Categoria.objects.all().count()
+	countP = Proveedor.objects.all().count()
+	countR = Producto.objects.all().count()
+	countA = Adm.objects.all().count()
+	countL = Client.objects.all().count()
+	countV = Venta.objects.all().count()
+	context = {'countV':countV,'countL':countL,'countA':countA, 'countC':countC, 'countP':countP, 'countR': countR}
+	return render(request, 'Inicio/administracion.html',context)
 
 class inventario(ListView):
 	model = Producto

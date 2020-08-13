@@ -1,21 +1,23 @@
 {% extends 'index_1.html' %}
 {% block content %}
-	
 
-		<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp full-width table-responsive">
+<div class="mdl-grid">
+	<div class="mdl-cell mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--12-col-desktop">
+	<div class="table-responsive">
+		<table class="table table-hover">
 		<thead>
 			<tr>
-				<th class="mdl-data-table__cell--non-numeric">Name</th>
+				<th scope="col">Nombre</th>
 				
-				<th>Stock</th>
-				<th>Action</th>
+				<th scope="col">Stock</th>
+				<th scope="col">Accion</th>
 		
 			</tr>
 		</thead>
 		<tbody>
 			{% for mov in object_list %}
 			<tr>
-				<td class="mdl-data-table__cell--non-numeric">{{mov.prod.name}}</td>
+				<td scope="row">{{mov.prod.name}}</td>
 				<td>{{mov.quant}}</td>
 				{% if mov.entry == 1 %}
 					<td>entrada</td>					
@@ -24,10 +26,11 @@
 				{% endif %}
 				
 			</tr>
-		
-			
-			
 			{% endfor %}
 		</tbody>
-	</table>
+		</table>
+		</div>
+	</div>
+</div>
+
 {% endblock %}

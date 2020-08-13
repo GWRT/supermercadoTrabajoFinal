@@ -31,14 +31,26 @@
         <i class="zmdi zmdi-account-circle"></i>
       </p>
       <p class="text-center text-condensedLight">Sign in with your Account</p>
-      <form method='POST' class="row login_form" action="{% url 'loginUser' %}" id="register_form" >
-            {% csrf_token %}
-            {{form}}
-      <button type="submit">Iniciar</button> 
-
+      <form method='POST' action="{% url 'loginUser' %}" id="register_form" >
+        {% csrf_token %}
+				  
+				{% for fields in form %}
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						{{ fields }}
+						<label class="mdl-textfield__label" for='{{ fields.id_for_label }}'>{{ fields.label }}</label>
+					</div>	
+        {% endfor %}
+        <input type="submit" value="Ingresar" class="mdl-button mdl-js-button mdl-js-ripple-effect" style="color: #3F51B5; margin: 0 auto; display: block;">
       </form>
-      <a class="button button-account" href="{% url 'registerClient' %}">Register Now</a>
+      <a class="mdl-button mdl-js-button mdl-js-ripple-effect" 
+          style="color: #3F51B5; margin: 0 auto; display: block; text-decoration: none;" 
+          href="{% url 'registerClient' %}">
+        Registrarse
+      </a>
     </div>
   </div>
+  <style>
+		.mdl-textfield{padding-bottom: 27px;}
+	</style>
 </body>
 </html>

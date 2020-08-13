@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import path, include
 from . import views
-from pedidos.views import pedidos, checkout, listVentas, listPed
+from pedidos.views import pedidos, checkout, listVentas, listPed, deletePed
 
 urlpatterns = [ 
     path('',views.Inicio,name='Inicio'),
@@ -13,5 +13,6 @@ urlpatterns = [
     path('checkout/<int:pk>/',checkout,name='checkout'),
     path('listVentas/',listVentas.as_view(),name='listVentas'),
     path('listPed/',listPed.as_view(),name='listPed'),
+    path('deletePed/<int:pk>/',deletePed.as_view(),name='deletePed'),
 
 ]

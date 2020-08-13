@@ -37,11 +37,33 @@
     <div class="full-width navLateral-bg btn-menu"></div>
     <div class="full-width navLateral-body">
       <div class="full-width navLateral-body-logo text-center tittles">
-        <i class="zmdi zmdi-close btn-menu"></i> Inventory 
+        <i class="zmdi zmdi-close btn-menu"></i> Inventario 
       </div>
-      
+      <figure class="full-width navLateral-body-tittle-menu">
+        <div>
+          <img src="{% static 'assets/img/sh.png' %}" alt="Avatar" class="img-responsive">
+        </div>
+        <figcaption>
+          <span>
+            Administracion<br>
+            <small>Nombre</small>
+          </span>
+        </figcaption>
+      </figure>
       <nav class="full-width">
         <ul class="full-width list-unstyle menu-principal">
+          <li class="full-width divider-menu-h"></li>
+          <li class="full-width">
+            <a href="{% url 'Administracion' %}" class="full-width">
+              <div class="navLateral-body-cl">
+                <i class="zmdi zmdi-face"></i>
+              </div>
+              <div class="navLateral-body-cr">
+                INICIO
+              </div>
+            </a>
+          </li>
+          <li class="full-width divider-menu-h"></li>
           <li class="full-width">
             <a href="{% url 'listProduct' %}" class="full-width">
               <div class="navLateral-body-cl">
@@ -67,7 +89,7 @@
           <li class="full-width">
             <a href="{% url 'listProvider' %}" class="full-width">
               <div class="navLateral-body-cl">
-                <i class="zmdi zmdi-shopping-cart"></i>
+                <i class="zmdi zmdi-truck"></i>
               </div>
               <div class="navLateral-body-cr">
                 PROVEEDORES
@@ -79,7 +101,7 @@
           <li class="full-width">
             <a href="{% url 'listAdmin' %}" class="full-width">
               <div class="navLateral-body-cl">
-                <i class="zmdi zmdi-shopping-cart"></i>
+                <i class="zmdi zmdi-accounts-alt"></i>
               </div>
               <div class="navLateral-body-cr">
                 ADMINISTRADORES
@@ -90,10 +112,10 @@
           <li class="full-width">
             <a href="{% url 'registro' %}" class="full-width">
               <div class="navLateral-body-cl">
-                <i class="zmdi zmdi-shopping-cart"></i>
+                <i class="zmdi zmdi-format-align-left"></i>
               </div>
               <div class="navLateral-body-cr">
-                REGISTRO
+                HISTORIAL DE MOVIMIENTOS
               </div>
             </a>
           </li>
@@ -101,7 +123,7 @@
           <li class="full-width">
             <a href="{% url 'movimientos' %}" class="full-width">
               <div class="navLateral-body-cl">
-                <i class="zmdi zmdi-shopping-cart"></i>
+                <i class="zmdi zmdi-assignment-o"></i>
               </div>
               <div class="navLateral-body-cr">
                 MOVIMIENTOS
@@ -133,16 +155,19 @@
         <div class="mdl-tooltip" for="btn-menu">Hide / Show MENU</div>
         <nav class="navBar-options-list">
           <ul class="list-unstyle">
-            <li class="btn-Notification" id="notifications">
-              <i class="zmdi zmdi-notifications"></i>
-              <div class="mdl-tooltip" for="notifications">Notifications</div>
+            
+            
+            <li>
+              <a href="{% url 'Inicio' %}"><small>Tienda</small> <i class="zmdi zmdi-store"></i></a>
             </li>
-            <li class="btn-exit" id="btn-exit">
-              <i class="zmdi zmdi-power"></i>
-              <div class="mdl-tooltip" for="btn-exit">LogOut</div>
+          
+            <li>
+              <a href="{% url 'logoutUser' %}"><small>Cerrar Sesion</small> <i class="zmdi zmdi-power"></i></a>
             </li>
-            <a href="{% url 'profileadm' %}">Cuenta</a>
-            <li class="text-condensedLight noLink" ><small>{{ user.username }}</small></li>
+            <li>
+              <a href="{% url 'profileadm' %}"><small>{{ user.username }}</small> <i class="zmdi zmdi-account"></i></a>
+            </li>
+            
             <li class="noLink">
               <figure>
 

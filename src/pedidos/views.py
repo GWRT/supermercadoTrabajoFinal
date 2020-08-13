@@ -2,7 +2,9 @@ from django.shortcuts import render, redirect
 from .form import PedForm
 from productos.models import Producto
 from .models import Pedido, Venta
-from django.views.generic import ListView
+from django.views.generic import ListView, DeleteView
+from django.urls import reverse_lazy 
+
 
 # Create your views here.
 
@@ -51,3 +53,7 @@ class listPed(ListView):
 		return Pedido.objects.filter(
 			user=self.request.user.client
 		)
+
+class deletePed(DeleteView):
+	model = Pedido
+	success_url = reverse_lazy('listPed')

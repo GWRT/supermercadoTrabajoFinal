@@ -10,6 +10,7 @@ urlpatterns = [
     path('logoutUser/',views.logoutUser,name='logoutUser'),
     path('listAdmin/',views.listAdmin.as_view(), name='listAdmin'),
     path('profileadm/', views.profileadm, name='profileadm'),
+    path('profilecli/', views.profilecli, name='profilecli'),
     path('password/', views.password, name="password")
 
 ]
