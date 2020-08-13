@@ -27,7 +27,7 @@ class clientRegister(UserCreationForm):
 		for field in self.fields:
 			self.fields[field].widget.attrs = {
 				'class': 'mdl-textfield__input',
-			}
+			}			
 
 
 	@transaction.atomic
@@ -72,7 +72,21 @@ class adminRegister(UserCreationForm):
 		return user
 
 
-        
+	def __init__(self, *args, **kwargs):
+		super(adminRegister, self).__init__(*args, **kwargs)
+		for field in self.fields:
+			self.fields[field].widget.attrs = {
+				'class': 'mdl-textfield__input',
+			}
+		self.fields['first_name'].label = "Nombre"
+		self.fields['last_name'].label = "Apellido"
+		self.fields['email'].label = "Correo"
+		self.fields['username'].label = "Usuario"
+		self.fields['password1'].label = "Contraseña"
+		self.fields['password2'].label = "Confirme su Contraseña"
+
+
+      
 class UpdateUser(forms.ModelForm):
     email = forms.EmailField(max_length=254, widget=forms.TextInput(attrs={'placeholder': 'Correo electronico'}))
     class Meta:
