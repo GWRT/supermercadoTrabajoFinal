@@ -1,21 +1,23 @@
 {% extends 'index_2.html' %}
 {% block content %}
 	
-
-		<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp full-width table-responsive">
+<div class="mdl-grid">
+	<div class="mdl-cell mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--12-col-desktop">
+	<div class="table-responsive">
+		<table class="table table-hover">
 		<thead>
 			<tr>
-				<th class="mdl-data-table__cell--non-numeric">Name</th>
+				<th scope="col">Name</th>
 				
-				<th>Stock</th>
-				<th>Action</th>
+				<th scope="col">Stock</th>
+				<th scope="col">Action</th>
 		
 			</tr>
 		</thead>
 		<tbody>
 			{% for ped in object_list %}
 			<tr>
-				<td class="mdl-data-table__cell--non-numeric">{{ped.item}}</td>
+				<td scope="row">{{ped.item}}</td>
 				<td>{{ped.quantity}}</td>
 				{% if ped.pay == True %}
 				<td>Pagado</td>
@@ -27,4 +29,7 @@
 			{% endfor %}
 		</tbody>
 	</table>
+	</div>
+	</div>
+</div>
 {% endblock %}

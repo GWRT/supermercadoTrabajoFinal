@@ -67,7 +67,7 @@
           <li class="full-width">
             <a href="{% url 'listProvider' %}" class="full-width">
               <div class="navLateral-body-cl">
-                <i class="zmdi zmdi-shopping-cart"></i>
+                <i class="zmdi zmdi-truck"></i>
               </div>
               <div class="navLateral-body-cr">
                 PROVEEDORES
@@ -79,7 +79,7 @@
           <li class="full-width">
             <a href="{% url 'listAdmin' %}" class="full-width">
               <div class="navLateral-body-cl">
-                <i class="zmdi zmdi-shopping-cart"></i>
+                <i class="zmdi zmdi-accounts-alt"></i>
               </div>
               <div class="navLateral-body-cr">
                 ADMINISTRADORES
@@ -90,10 +90,10 @@
           <li class="full-width">
             <a href="{% url 'registro' %}" class="full-width">
               <div class="navLateral-body-cl">
-                <i class="zmdi zmdi-shopping-cart"></i>
+                <i class="zmdi zmdi-format-align-left"></i>
               </div>
               <div class="navLateral-body-cr">
-                REGISTRO
+                HISTORIAL DE MOVIMIENTOS
               </div>
             </a>
           </li>
@@ -101,7 +101,7 @@
           <li class="full-width">
             <a href="{% url 'movimientos' %}" class="full-width">
               <div class="navLateral-body-cl">
-                <i class="zmdi zmdi-shopping-cart"></i>
+                <i class="zmdi zmdi-assignment-o"></i>
               </div>
               <div class="navLateral-body-cr">
                 MOVIMIENTOS
@@ -133,16 +133,10 @@
         <div class="mdl-tooltip" for="btn-menu">Hide / Show MENU</div>
         <nav class="navBar-options-list">
           <ul class="list-unstyle">
-            <li class="btn-Notification" id="notifications">
-              <i class="zmdi zmdi-notifications"></i>
-              <div class="mdl-tooltip" for="notifications">Notifications</div>
-            </li>
-            <li class="btn-exit" id="btn-exit">
-              <i class="zmdi zmdi-power"></i>
-              <div class="mdl-tooltip" for="btn-exit">LogOut</div>
-            </li>
-            <a href="{% url 'profileadm' %}">Cuenta</a>
-            <li class="text-condensedLight noLink" ><small>{{ user.username }}</small></li>
+            
+            <a href="{% url 'logoutUser' %}">Cerrar sesion</a>
+            <a href="{% url 'profileadm' %}"><li class="text-condensedLight noLink" ><small>{{ user.username }}</small></li></a>
+            
             <li class="noLink">
               <figure>
 
